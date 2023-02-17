@@ -50,8 +50,6 @@ User model
   password: String,
   favorites: [RestaurantId],
   wishlist: [RestaurantId],
-
-
 }
 
 ```
