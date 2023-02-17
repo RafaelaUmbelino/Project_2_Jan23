@@ -17,6 +17,8 @@ Restaurant Diary and Wishlist - Save your favorites and create a wishlist of the
 - **wishlist** - shows all the restaurants you added to your wishlist, sorted by higher preference, plus a sorting menu, and "add to favorites" (for places you have visited) and "delete" buttons for each restaurant
 - **favorite list** - shows all the restaurants you selected as favorites, sorted by higher personal rating, plus a sorting meny, and "delete" buttons for each restaurant
 - **restaurant details** - each restaurant displayed on the wishlist and favorites list opens to a page with more details on the restaurant
+- **404** - render a page that informs the user something went wrong on the client side
+- **500** - render a page that informs the user something went wrong on the server side
 
 <br>
 
@@ -29,6 +31,9 @@ Restaurant Diary and Wishlist - Save your favorites and create a wishlist of the
 | `POST`     | `/login`  | Sends Login form data to the server.                         | { email, password } |
 | `GET`      | `/signup` | Renders `signup` form view.                                  |                     |
 | `POST`     | `/signup` | Sends Sign Up info to the server and creates user in the DB. | { email, password } |
+| `POST`     | `/signout` | Logs out from the session. ||
+| `GET`     | `/404` | render 404 page. ||
+| `GET`     | `/500` | render 500 page. ||
 | `GET`      | `/restaurants/details/:restaurantid` | Renders `restaurant-details` view for the particular restaurant. |
 | `POST`     | `/user/favorites/:restaurantid`      |Creates the object inside `favorites database` |
 | `POST`     | `/user/wishlist/:restaurantid`       | Creates the object inside `wishlist database` |
