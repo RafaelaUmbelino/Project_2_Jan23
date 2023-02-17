@@ -77,6 +77,10 @@ Restaurants model
   preference: String,
 }
 
+```review
+{
+}
+
 ```
 
 <br>
