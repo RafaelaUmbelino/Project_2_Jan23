@@ -20,6 +20,8 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    favorites:[{ type: Schema.Types.ObjectId, ref: 'Restaurants' }],
+    wishlist:[{ type: Schema.Types.ObjectId, ref: 'Restaurants' }]
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

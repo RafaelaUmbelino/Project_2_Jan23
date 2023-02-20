@@ -1,0 +1,38 @@
+<h1>Favorite Restaurants List</h1>
+
+<div class='container'>
+  <div class='row'>
+<form>
+    {{#each favorites}}
+      <div class='card' style='width: 18rem;'>
+        <div class='card-body'>
+          <h5 class='card-title'>{{name}}</h5>
+          <p class='card-text'>{{place_id}}</p>
+          <p class='card-text'>{{business_status}}</p>
+          <p class='card-text'>{{price_level}}</p>
+          <p class='card-text'>{{rating}}</p>
+          <p class='card-text'>{{url}}</p>
+          <p class='card-text'>{{adr_address}}</p>
+          <p class='card-text'>{{website}}</p>
+          <p class='card-text'>{{url}}</p>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+  </form>
+</div>
+
+<div id="reviews">
+  <h2>Your Review</h2>
+  <form action="/auth/favorites" method="POST">
+
+    <label> Review
+      <input type="text" name="review" placeholder="Write Your Review!" />
+    </label>
+
+    <button type="submit">Add Review</button>
+
