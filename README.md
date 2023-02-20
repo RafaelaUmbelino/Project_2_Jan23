@@ -24,24 +24,24 @@ Restaurant Diary and Wishlist - Save your favorites and create a wishlist of the
 
 ## Server Routes (Back-end):
 
-| **Method** | **Route** | **Description**                                              | Request - Body      |
-| ---------- | --------- | ------------------------------------------------------------ | ------------------- |
-| `GET`      | `/`       | Main page route. Renders home `index` view.                  |                     |
-| `GET`      | `/login`  | Renders `login` form view.                                   |                     |
-| `POST`     | `/login`  | Sends Login form data to the server.                         | { email, password } |
-| `GET`      | `/signup` | Renders `signup` form view.                                  |                     |
-| `POST`     | `/signup` | Sends Sign Up info to the server and creates user in the DB. | { email, password } |
-| `POST`     | `/signout` | Logs out from the session. ||
-| `GET`     | `/404` | render 404 page. ||
-| `GET`     | `/500` | render 500 page. ||
-| `GET`      | `/restaurants/details/:restaurantid` | Renders `restaurant-details` view for the particular restaurant. |
-| `POST`     | `/user/favorites/:restaurantid`      |Creates the object inside `favorites database` |
-| `POST`     | `/user/wishlist/:restaurantid`       | Creates the object inside `wishlist database` |
-| `GET`      | `/user/favorites` | Private route. Render the `favorites` view. |
-| `DELETE`   | `/user/favorites/:restaurantId` | Private route. Deletes the specific restaurant from the favorites list. |
-| `GET`      | `/user/wishlist` | Private route. Render the `wishlist` view. |
-| `DELETE`   | `/user/wishlit/:restaurantId` | Private route. Deletes the specific restaurant from the wishlist |
-| `POST`     | `/user/favorites/:restaurantid` |Adds the specific restaurant to the `favorites database` |  
+| **Method** | **Route**                            | **Description**                                                         | Request - Body      |
+| ---------- | ------------------------------------ | ----------------------------------------------------------------------- | ------------------- |
+| `GET`      | `/`                                  | Main page route. Renders home `index` view.                             |                     |
+| `GET`      | `/login`                             | Renders `login` form view.                                              |                     |
+| `POST`     | `/login`                             | Sends Login form data to the server.                                    | { email, password } |
+| `GET`      | `/signup`                            | Renders `signup` form view.                                             |                     |
+| `POST`     | `/signup`                            | Sends Sign Up info to the server and creates user in the DB.            | { email, password } |
+| `POST`     | `/signout`                           | Logs out from the session.                                              |                     |
+| `GET`      | `/404`                               | render 404 page.                                                        |                     |
+| `GET`      | `/500`                               | render 500 page.                                                        |                     |
+| `GET`      | `/restaurants/details/:restaurantid` | Renders `restaurant-details` view for the particular restaurant.        |
+| `POST`     | `/user/favorites/:restaurantid`      | Creates the object inside `favorites database`                          |
+| `POST`     | `/user/wishlist/:restaurantid`       | Creates the object inside `wishlist database`                           |
+| `GET`      | `/user/favorites`                    | Private route. Render the `favorites` view.                             |
+| `DELETE`   | `/user/favorites/:restaurantId`      | Private route. Deletes the specific restaurant from the favorites list. |
+| `GET`      | `/user/wishlist`                     | Private route. Render the `wishlist` view.                              |
+| `DELETE`   | `/user/wishlit/:restaurantId`        | Private route. Deletes the specific restaurant from the wishlist        |
+| `POST`     | `/user/favorites/:restaurantid`      | Adds the specific restaurant to the `favorites database`                |
 
 ## Models
 
@@ -61,7 +61,7 @@ User model
 
 Restaurants model
 
-```javascript
+````javascript
 {
   restaurantId: String,
   name: String,
@@ -81,7 +81,7 @@ Restaurants model
 {
 }
 
-```
+````
 
 <br>
 
@@ -107,7 +107,7 @@ The url to your repository and to your deployed project
 
 [Repository Link](https://github.com/RafaelaUmbelino/Project_2_Jan23)
 
-[Deploy Link]()
+[Deploy Link](https://piteu.cyclic.app/)
 
 <br>
 
