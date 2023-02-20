@@ -22,6 +22,7 @@ const capitalize = require("./utils/capitalize");
 const projectName = "Pitéu";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
+app.locals.mapsKey = process.env.PLACES_API_KEY
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
@@ -29,6 +30,9 @@ app.use("/", indexRoutes);
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
+
+const createRoutes = require("./routes/create.routes");
+app.use("/", createRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
