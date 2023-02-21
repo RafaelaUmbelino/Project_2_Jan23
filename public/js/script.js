@@ -19,6 +19,11 @@ function initAutocomplete() {
 				/* 'opening_hours',  'price_level', 'rating', */ 'url',
 				'formatted_address',
 				'website',
+				'serves_wine',
+				'serves_breakfast',
+				'serves_brunch',
+				'serves_dinner',
+				'serves_vegetarian_food',
 			],
 		},
 	);
@@ -40,6 +45,11 @@ function onPlaceChanged() {
 		url,
 		formatted_address,
 		website,
+		serves_breakfast, 
+		serves_brunch, 
+		serves_dinner, 
+		serves_vegetarian_food, 
+		serves_wine
 	} = place;
 
 	if (!place.place_id) {
@@ -95,6 +105,16 @@ function onPlaceChanged() {
 		if (formatted_address) {wish_form_formatted_address.value = formatted_address}
 		const wish_form_website = document.getElementById('wish_form_website');
 		if (website) {wish_form_website.value = website}
+		const wish_form_serves_breakfast = document.getElementById('wish_form_serves_breakfast');
+		if (serves_breakfast) {wish_form_serves_breakfast.value = serves_breakfast}
+		const wish_form_serves_brunch = document.getElementById('wish_form_serves_brunch');
+		if (serves_brunch) {wish_form_serves_brunch.value = serves_brunch}
+		const wish_form_serves_dinner = document.getElementById('wish_form_serves_dinner');
+		if (serves_dinner) {wish_form_serves_dinner.value = serves_dinner}
+		const wish_form_serves_vegetarian_food = document.getElementById('wish_form_serves_vegetarian_food');
+		if (serves_vegetarian_food) {wish_form_serves_vegetarian_food.value = serves_vegetarian_food}
+		const wish_form_serves_wine = document.getElementById('wish_form_serves_wine');
+		if (serves_wine) {wish_form_serves_wine.value = serves_wine}
 
 //----------------------------------------------------------------------- CREATING FAVORITES FORM ⤵
 
@@ -103,6 +123,7 @@ function onPlaceChanged() {
 		favslistSubmit.innerHTML = 'Add to Favorites';
 		favslistSubmit.setAttribute('type', 'submit');
 		favslistForm.appendChild(favslistSubmit)
+		
     	const favs_form_place_id = document.getElementById('favs_form_place_id')
 		if (favs_form_place_id) {favs_form_place_id.value = place_id}
     	const favs_form_name = document.getElementById('favs_form_name');
@@ -121,5 +142,15 @@ function onPlaceChanged() {
 		if (favs_form_formatted_address) {favs_form_formatted_address.value = formatted_address}
 		const favs_form_website = document.getElementById('favs_form_website');
 		if (favs_form_website) {favs_form_website.value = website}
+		const favs_form_serves_breakfast = document.getElementById('favs_form_serves_breakfast');
+		if (serves_breakfast) {favs_form_serves_breakfast.value = serves_breakfast}
+		const favs_form_serves_brunch = document.getElementById('favs_form_serves_brunch');
+		if (serves_brunch) {favs_form_serves_brunch.value = serves_brunch}
+		const favs_form_serves_dinner = document.getElementById('favs_form_serves_dinner');
+		if (serves_dinner) {favs_form_serves_dinner.value = serves_dinner}
+		const favs_form_serves_vegetarian_food = document.getElementById('favs_form_serves_vegetarian_food');
+		if (serves_vegetarian_food) {favs_form_serves_vegetarian_food.value = serves_vegetarian_food}
+		const favs_form_serves_wine = document.getElementById('favs_form_serves_wine');
+		if (serves_wine) {favs_form_serves_wine.value = serves_wine}
 	}
 }
