@@ -15,7 +15,7 @@ function initAutocomplete() {
 			fields: [
 				'place_id',
 				'name',
-				/* 'business_status', 'opening_hours', 'photos', 'price_level', 'rating', */ 'url',
+				/* 'opening_hours', 'photos', 'price_level', 'rating', */ 'url',
 				'adr_address',
 				'website',
 			],
@@ -32,7 +32,6 @@ function onPlaceChanged() {
 	let {
 		place_id,
 		name,
-		business_status,
 		opening_hours,
 		photos,
 		price_level,
@@ -57,8 +56,7 @@ function onPlaceChanged() {
 		}
     
 		/*     document.getElementById('res-rating').innerHTML = rating;
-    	document.getElementById('res-price-level').innerHTML = price_level;
-    	document.getElementById('res-status').innerHTML = business_status; */
+    	document.getElementById('res-price-level').innerHTML = price_level; */
 
 		/*     document.getElementById('res-photo').innerHTML = place.photos[0].photo_reference;
     	document.getElementById('res-photo').setAttribute('href', place.url.photos[0].getUrl());
@@ -78,8 +76,6 @@ function onPlaceChanged() {
 		console.log(wish_form_place_id.value);
     	const wish_form_name = document.getElementById('wish_form_name');
 		if (wish_form_name) {wish_form_name.value = name}
-		const wish_form_business_status = document.getElementById('wish_form_business_status');
-		if (wish_form_business_status) {wish_form_business_status.value = business_status}
 		const wish_form_opening_hours = document.getElementById('wish_form_opening_hours');
 		if (wish_form_opening_hours) {wish_form_opening_hours.value = opening_hours}
 		const wish_form_photos = document.getElementById('wish_form_photos');
@@ -108,8 +104,6 @@ function onPlaceChanged() {
 		console.log(favs_form_place_id.value);
     	const favs_form_name = document.getElementById('favs_form_name');
 		if (favs_form_name) {favs_form_name.value = name}
-		const favs_form_business_status = document.getElementById('favs_form_business_status');
-		if (favs_form_business_status) {favs_form_business_status.value = business_status}
 		const favs_form_opening_hours = document.getElementById('favs_form_opening_hours');
 		if (favs_form_opening_hours) {favs_form_opening_hours.value = opening_hours}
 		const favs_form_photos = document.getElementById('favs_form_photos');

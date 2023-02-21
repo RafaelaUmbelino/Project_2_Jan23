@@ -23,17 +23,21 @@ router.get("/:id/favorites", isLoggedIn, async (req, res) => {
 //   console.log("Error while displaying a form to create a restaurant: ", err)
 // );
 
-router.get("/:id/wishlist", isLoggedIn, async (req, res) => {
-  // aceder só ao id do user, para aceder à lista e fazer o populate.
-  let { id } = req.session.currentUser;
+router.get("/:id/wishlist", isLoggedIn, async (req, res, next) => {
+  try {
+    // aceder só ao id do user, para aceder à lista e fazer o populate.
+    let { _id } = req.session.currentUser;
 
-  const userWishlist = await User.findById(id).populate("wishlist");
+    const userWishlist = await User.findById(id).populate("wishlist");
 
-  res.render("auth/wishlist", { userWishlist });
+    res.render("auth/wishlist", { userWishlist });
+    
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 });
-// .catch((err) =>
-//   console.log("Error while displaying a form to create a restaurant: ", err)
-// );
+
 
 // router.get("/wishlist", isLoggedIn, (req, res, next) => {
 //   res.render("wishlist");
@@ -58,7 +62,7 @@ router.get("/:restaurantId", isLoggedIn, async (req, res) => {
 
 //Delete button apenas nas listas do user fetch 
 
-router.post ('/:id/delete', async (req,res,next)=> {
+/* router.post ('/:id/delete', async (req,res,next)=> {
     let { id } = req.session.currentUser;
     const removeFavorite = await User.findByIdAndUpdate({ id }.populate("favorites"), {$pull: Restaurant.findById(req.params.restaurantId)})
 
@@ -72,15 +76,7 @@ router.post ('/:id/delete', async (req,res,next)=> {
 
     res.render("auth/wishlist", {removeWishlist});
 
-});
+}); */
 
 
 module.exports = router;
-
-movieRouter.post('/:id/delete', (req, res, next) => {
-    Movie.findByIdAndRemove(req.params.id)
-    .then(() => {
-      res.redirect('/movies')
-    })
-    .catch( err => console.log("Error while deleting a movie: ", err))
-  })
