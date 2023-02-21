@@ -11,56 +11,72 @@ const Review = require("../models/Review.model");
 //   res.render("restaurantDetails");
 // });
 
-router.get("/:id/favorites", isLoggedIn, async (req, res) => {
+router.get("/:id/favorites", isLoggedIn, async (req, res, next) => {
   // aceder só ao id do user, para aceder à lista e fazer o populate.
-  let { _id } = req.session.currentUser;
+  try {
+    let { _id } = req.session.currentUser;
 
-  const user = await User.findById(_id).populate("favorites");
+    const user = await User.findById(_id).populate("favorites");
 
-  res.render("auth/favorites", { user });
+    res.render("auth/favorites",  user );
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 });
-// .catch((err) =>
-//   console.log("Error while displaying a form to create a restaurant: ", err)
-// );
+//
 
 router.get("/:id/wishlist", isLoggedIn, async (req, res, next) => {
   try {
     // aceder só ao id do user, para aceder à lista e fazer o populate.
+
     let { _id } = req.session.currentUser;
 
-    const userWishlist = await User.findById(id).populate("wishlist");
+    const userWishlist = await User.findById(_id).populate("wishlist");
 
-    res.render("auth/wishlist", { userWishlist });
-    
+    console.log(userWishlist);
+
+    res.render("auth/wishlist", userWishlist);
   } catch (error) {
     console.log(error);
     next(error);
   }
 });
 
-
 // router.get("/wishlist", isLoggedIn, (req, res, next) => {
 //   res.render("wishlist");
 // });
 
-router.post("/:id/review", isLoggedIn, async (req, res) => {
-  let { id } = req.session.currentUser;
+router.post("/:id/review", isLoggedIn, async (req, res, next) => {
+  try {
+    let { id } = req.session.currentUser;
 
-  const userReview = await User.findById(id).populate("review");
+    const userReview = await User.findById(id).populate("review");
 
-  res.render("auth/favorites", { userReview });
+    res.render("auth/favorites", { userReview });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 });
 
-router.get("/:restaurantId", isLoggedIn, async (req, res) => {
+router.get("/:restaurantId", isLoggedIn, async (req, res, next) => {
   // cast is the array of IDs and we need full object so we need to use
   // .populate('cast) and pass the "cast" in the method because we are populating that specific field
 
-  const restaurantDetails = await Restaurant.findById(req.params.restaurantId); //.populate('cast')
+  try {
+    const restaurantDetails = await Restaurant.findById(
+      req.params.restaurantId
+    ); //.populate('cast')
 
-  res.render("auth/restaurantDetails", { restaurantDetails });
+    res.render("auth/restaurantDetails", { restaurantDetails });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 });
 
-//Delete button apenas nas listas do user fetch 
+//Delete button apenas nas listas do user fetch
 
 /* router.post ('/:id/delete', async (req,res,next)=> {
     let { id } = req.session.currentUser;
@@ -77,6 +93,5 @@ router.post ('/:id/delete', async (req,res,next)=> {
     res.render("auth/wishlist", {removeWishlist});
 
 }); */
-
 
 module.exports = router;
