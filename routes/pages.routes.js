@@ -43,6 +43,29 @@ router.get("/:id/wishlist", isLoggedIn, async (req, res, next) => {
   }
 });
 
+router.get("/:id/collections", isLoggedIn, async (req, res, next) => {
+  try {
+    let { _id } = req.session.currentUser;
+    const userCollections = await User.findById(_id).populate("collections");
+    res.render("auth/user-collections", userCollections);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
+router.get("/collection/:id", isLoggedIn, async (req, res, next) => {
+  try {
+    let { id } = req.params;
+    const collection = await Collection.findById(_id).populate("restaurants");
+    res.render("auth/collection-details", collection);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
+});
+
+
 router.post("/wishtofavorites/:id", isLoggedIn, async(req, res, next) => {
  try {
  

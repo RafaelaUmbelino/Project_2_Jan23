@@ -6,7 +6,6 @@ const userSchema = new Schema(
     username: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
     },
     email: {
@@ -21,7 +20,8 @@ const userSchema = new Schema(
       required: true,
     },
     favorites:[{ type: Schema.Types.ObjectId, ref: 'Restaurant' }],
-    wishlist:[{ type: Schema.Types.ObjectId, ref: 'Restaurant' }]
+    wishlist:[{ type: Schema.Types.ObjectId, ref: 'Restaurant' }],
+    collections: [{ type: Schema.Types.ObjectId, ref: 'Collection' }],
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
