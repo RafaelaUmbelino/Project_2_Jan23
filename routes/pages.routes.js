@@ -43,6 +43,8 @@ router.get("/:id/wishlist", isLoggedIn, async (req, res, next) => {
   }
 });
 
+
+
 // router.get("/wishlist", isLoggedIn, (req, res, next) => {
 //   res.render("wishlist");
 // });
