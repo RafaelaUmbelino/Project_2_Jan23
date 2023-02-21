@@ -12,10 +12,15 @@
           <p class='card-text'>{{rating}}</p>
           <a href="{{url}} " class="href">View on Maps</a>
           <a href="{{website}} " class="href">Visit Website</a>
-          {{!-- <p class='card-text'>{{url}}</p> --}}
           <p class='card-text'>{{formatted_address}}</p>
-          {{!-- <p class='card-text'>{{website}}</p> --}}
-          
+
+          <form action="/restaurant/{{this._id}}" method="get" class="">
+
+          <button type="submit">Comments</button>
+
+          </form>
+
+
           
         </div>
       </div>
@@ -28,13 +33,5 @@
   </form>
 </div>
 
-<div id="reviews">
-  <h2>Your Review</h2>
-  <form action="/auth/favorites" method="POST">
 
-    <label> Review
-      <input type="text" name="review" placeholder="Write Your Review!" />
-    </label>
-
-    <button type="submit">Add Review</button>
 

@@ -6,14 +6,13 @@
    
       <div class='card' style='width: 18rem;'>
         <div class='card-body'>
-          <img src="{{photos}}" alt="{{name}} photo" class="">
+         <img src="{{photos}}" alt="{{name}} photo" class="">
           <h5 class='card-title'>{{name}}</h5>
           <p class='card-text'>{{price_level}}</p>
           <p class='card-text'>{{rating}}</p>
-          <p class='card-text'>{{url}}</p>
-           <p class='card-text'>{{formatted_address}}</p>
-          <p class='card-text'>{{website}}</p>
-          <p class='card-text'>{{url}}</p>
+          <a href="{{url}} " class="href">View on Maps</a>
+          <a href="{{website}} " class="href">Visit Website</a>
+          <p class='card-text'>{{formatted_address}}</p>
 
           
         </div>
@@ -25,3 +24,13 @@
     {{/if}}
   </form>
 </div>
+
+<div id="reviews">
+  <h2>Your Review</h2>
+  <form action="/auth/favorites" method="POST">
+
+    <label> Review
+      <input type="text" name="review" placeholder="Write Your Review!" />
+    </label>
+
+    <button type="submit">Add Review</button>

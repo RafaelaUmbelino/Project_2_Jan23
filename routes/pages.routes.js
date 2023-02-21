@@ -51,7 +51,7 @@ router.post("/:id/review", isLoggedIn, async (req, res, next) => {
   try {
     let { id } = req.session.currentUser;
 
-    const userReview = await User.findById(id).populate("review");
+    const userReview = await User.findById(_id).populate("review");
 
     res.render("auth/favorites", { userReview });
   } catch (error) {
@@ -60,16 +60,17 @@ router.post("/:id/review", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.get("/:restaurantId", isLoggedIn, async (req, res, next) => {
+router.get("/restaurant/:id", isLoggedIn, async (req, res, next) => {
   // cast is the array of IDs and we need full object so we need to use
   // .populate('cast) and pass the "cast" in the method because we are populating that specific field
 
   try {
-    const restaurantDetails = await Restaurant.findById(
-      req.params.restaurantId
-    ); //.populate('cast')
+    const {id} = req.params;  
 
-    res.render("auth/restaurantDetails", { restaurantDetails });
+    let restaurant = await Restaurant.findById(id)
+
+    res.render("auth/restaurantDetails", restaurant);
+
   } catch (error) {
     console.log(error);
     next(error);
