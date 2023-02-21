@@ -19,10 +19,10 @@ router.post('/:id/wishlist',isLoggedIn, async (req, res, next) => {
 			wish_form_website: website,
 		} = req.body;
 
-		console.log(req.body);
+		
 
 		const restaurantSearched = await Restaurant.findOne({ place_id });
-		console.log(restaurantSearched)
+		
 		if (restaurantSearched) {
 			await User.findByIdAndUpdate(_id, {$push: {wishlist: restaurantSearched._id}})
 			console.log('restaurant found')
@@ -41,7 +41,7 @@ router.post('/:id/wishlist',isLoggedIn, async (req, res, next) => {
 			});
 			const newRestaurant = await Restaurant.findOne({ place_id });
 			await User.findByIdAndUpdate(_id, {$push: {wishlist: newRestaurant._id}})
-			console.log(newRestaurant);
+			
 		}
 	} catch (error) {
 		console.log(error);
@@ -66,7 +66,7 @@ router.post('/:id/favorites',isLoggedIn, async (req, res, next) => {
 		} = req.body;
 		
 		const restaurantSearched = await Restaurant.findOne({ place_id });
-		console.log(restaurantSearched)
+		
 		if (restaurantSearched) {
 			await User.findByIdAndUpdate(_id, {$push: {favorites: restaurantSearched._id}})
 			console.log('restaurant found')
@@ -85,7 +85,7 @@ router.post('/:id/favorites',isLoggedIn, async (req, res, next) => {
 			});
 			const newRestaurant = await Restaurant.findOne({ place_id });
 			await User.findByIdAndUpdate(_id, {$push: {favorites: newRestaurant._id}})
-			console.log(newRestaurant);
+			
 		}
 	} catch (error) {
 		console.log(error);
