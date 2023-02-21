@@ -7,6 +7,8 @@ const User = require("../models/User.model");
 router.post('/:id/wishlist',isLoggedIn, async (req, res, next) => {
 	try {
 		const { _id } = req.session.currentUser;
+		const user = await User.findById(_id);
+		const userWishlist = user.wishlist;
 		const {
 			wish_form_place_id: place_id,
 			wish_form_name: name,
@@ -19,30 +21,33 @@ router.post('/:id/wishlist',isLoggedIn, async (req, res, next) => {
 			wish_form_website: website,
 		} = req.body;
 
-		console.log(req.body);
-
 		const restaurantSearched = await Restaurant.findOne({ place_id });
-		console.log(restaurantSearched)
-		if (restaurantSearched) {
-			await User.findByIdAndUpdate(_id, {$push: {wishlist: restaurantSearched._id}})
-			console.log('restaurant found')
-		} else {
-			console.log("no restaurant found")
-			await Restaurant.create({ 
-				place_id, 
-				name,
-				opening_hours,
-				photos,
-				price_level,
-				rating,
-				url,
-				formatted_address,
-				website,
-			});
-			const newRestaurant = await Restaurant.findOne({ place_id });
-			await User.findByIdAndUpdate(_id, {$push: {wishlist: newRestaurant._id}})
-			console.log(newRestaurant);
-		}
+/* 		console.log(restaurantSearched) */
+
+		if (!(userWishlist.includes(restaurantSearched._id))) {
+			if (restaurantSearched) {
+				await User.findByIdAndUpdate(_id, {$push: {wishlist: restaurantSearched._id}})
+				console.log('restaurant found')
+				res.redirect(`/${_id}/wishlist`)
+			} else {
+				console.log("no restaurant found")
+				await Restaurant.create({ 
+					place_id, 
+					name,
+					opening_hours,
+					photos,
+					price_level,
+					rating,
+					url,
+					formatted_address,
+					website,
+				});
+				const newRestaurant = await Restaurant.findOne({ place_id });
+				await User.findByIdAndUpdate(_id, {$push: {wishlist: newRestaurant._id}})
+				console.log(newRestaurant);
+				res.redirect(`/${_id}/wishlist`)
+			}
+		} else res.redirect(`/${_id}/wishlist`)
 	} catch (error) {
 		console.log(error);
 		next(error);
@@ -53,6 +58,8 @@ router.post('/:id/wishlist',isLoggedIn, async (req, res, next) => {
 router.post('/:id/favorites',isLoggedIn, async (req, res, next) => {
 	try {
 		const { _id } = req.session.currentUser;
+		const user = await User.findById(_id);
+		const userFavsList = user.favorites;
 		const {
 			favs_form_place_id: place_id,
 			favs_form_name: name,
@@ -67,25 +74,29 @@ router.post('/:id/favorites',isLoggedIn, async (req, res, next) => {
 		
 		const restaurantSearched = await Restaurant.findOne({ place_id });
 		console.log(restaurantSearched)
-		if (restaurantSearched) {
-			await User.findByIdAndUpdate(_id, {$push: {favorites: restaurantSearched._id}})
-			console.log('restaurant found')
-		} else {
-			console.log("no restaurant found")
-			await Restaurant.create({ 
-				place_id, 
-				name,
-				opening_hours,
-				photos,
-				price_level,
-				rating,
-				url,
-				formatted_address,
-				website,
-			});
-			const newRestaurant = await Restaurant.findOne({ place_id });
-			await User.findByIdAndUpdate(_id, {$push: {favorites: newRestaurant._id}})
-			console.log(newRestaurant);
+		if (!(userFavsList.includes(restaurantSearched._id))) {
+			if (restaurantSearched) {
+				await User.findByIdAndUpdate(_id, {$push: {favorites: restaurantSearched._id}})
+				console.log('restaurant found')
+				res.redirect(`/${_id}/favorites`)
+			} else {
+				console.log("no restaurant found")
+				await Restaurant.create({ 
+					place_id, 
+					name,
+					opening_hours,
+					photos,
+					price_level,
+					rating,
+					url,
+					formatted_address,
+					website,
+				});
+				const newRestaurant = await Restaurant.findOne({ place_id });
+				await User.findByIdAndUpdate(_id, {$push: {favorites: newRestaurant._id}})
+				console.log(newRestaurant);
+				res.redirect(`/${_id}/favorites`)
+			}
 		}
 	} catch (error) {
 		console.log(error);
