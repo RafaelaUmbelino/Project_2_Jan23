@@ -4,3 +4,47 @@
 
 
 <a href="/{{_id}}/favorites" class="href">Favorites</a>
+
+<input id='autocomplete' type='text' placeholder='Search a place' />
+<div>
+	<h1 id='res-name'></h1>
+	<p id='res-address'></p>
+	<a href='' id='res-maps-url' target='_blank'></a>
+	<a href='' id='res-website' target='_blank'></a>
+	<p id='res-rating'></p>
+	<p id='res-price-level'></p>
+	<p id='res-status'></p>
+	<div>
+		<ul id='res-opening-hours'>
+
+		</ul>
+	</div>
+	{{!     <img src="" alt="" id='res-photo'> }}
+{{!-- 	<a href='' id='res-photo' target='_blank'></a> --}}
+	<form action='/{{_id}}/wishlist' method='post' id='wishlist-add'>
+        <input type='text' name='wish_form_place_id' id='wish_form_place_id' value='' hidden/>
+        <input type='text' name='wish_form_name' id='wish_form_name' value='' hidden/>
+        <input type='text' name='wish_form_business_status' id='wish_form_business_status' value='' hidden/>
+        <input type='text' name='wish_form_opening_hours' id='wish_form_opening_hours' value='' hidden/>
+        <input type='text' name='wish_form_photos' id='wish_form_photos' value='' hidden/>
+        <input type='text' name='wish_form_price_level' id='wish_form_price_level' value='' hidden/>
+        <input type='text' name='wish_form_rating' id='wish_form_rating' value='' hidden/>
+        <input type='text' name='wish_form_url' id='wish_form_url' value='' hidden/>
+        <input type='text' name='wish_form_adr_address' id='wish_form_adr_address' value='' hidden/>
+        <input type='text' name='wish_form_website' id='wish_form_website' value='' hidden/>
+    </form>
+
+	<form action='/{{_id}}/favorites' method='post' id='favorites-add'>
+        <input type='text' name='favs_form_place_id' id='favs_form_place_id' value='' hidden/>
+        <input type='text' name='favs_form_name' id='favs_form_name' value='' hidden/>
+        <input type='text' name='favs_form_business_status' id='favs_form_business_status' value='' hidden/>
+        <input type='text' name='favs_form_opening_hours' id='favs_form_opening_hours' value='' hidden/>
+        <input type='text' name='favs_form_photos' id='favs_form_photos' value='' hidden/>
+        <input type='text' name='favs_form_price_level' id='favs_form_price_level' value='' hidden/>
+        <input type='text' name='favs_form_rating' id='favs_form_rating' value='' hidden/>
+        <input type='text' name='favs_form_url' id='favs_form_url' value='' hidden/>
+        <input type='text' name='favs_form_adr_address' id='favs_form_adr_address' value='' hidden/>
+        <input type='text' name='favs_form_website' id='favs_form_website' value='' hidden/>
+    </form>
+
+</div>
