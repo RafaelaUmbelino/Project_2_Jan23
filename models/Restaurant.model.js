@@ -6,11 +6,11 @@ const restaurantSchema = new Schema(
     place_id: String,
     name: String,
     //opening_hours: String,
-   // photos:
+    photos: String,
     price_level: String, 
     rating: String,
     url: String,
-    adr_address: String,
+    formatted_address: String,
     website: String,
   },
   // this second object adds extra properties: `createdAt` and `updatedAt`

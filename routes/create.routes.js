@@ -15,9 +15,11 @@ router.post('/:id/wishlist',isLoggedIn, async (req, res, next) => {
 			wish_form_price_level: price_level,
 			wish_form_rating: rating,
 			wish_form_url: url,
-			wish_form_adr_address: adr_address,
+			wish_form_formatted_address: formatted_address,
 			wish_form_website: website,
 		} = req.body;
+
+		console.log(req.body);
 
 		const restaurantSearched = await Restaurant.findOne({ place_id });
 		console.log(restaurantSearched)
@@ -34,7 +36,7 @@ router.post('/:id/wishlist',isLoggedIn, async (req, res, next) => {
 				price_level,
 				rating,
 				url,
-				adr_address,
+				formatted_address,
 				website,
 			});
 			const newRestaurant = await Restaurant.findOne({ place_id });
@@ -59,7 +61,7 @@ router.post('/:id/favorites',isLoggedIn, async (req, res, next) => {
 			favs_form_price_level: price_level,
 			favs_form_rating: rating,
 			favs_form_url: url,
-			favs_form_adr_address: adr_address,
+			favs_form_formatted_address: formatted_address,
 			favs_form_website: website,
 		} = req.body;
 		
@@ -78,7 +80,7 @@ router.post('/:id/favorites',isLoggedIn, async (req, res, next) => {
 				price_level,
 				rating,
 				url,
-				adr_address,
+				formatted_address,
 				website,
 			});
 			const newRestaurant = await Restaurant.findOne({ place_id });
