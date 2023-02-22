@@ -1,8 +1,12 @@
 const express = require('express');
 const isLoggedIn = require('../middleware/isLoggedIn');
+const isLoggedOut = require("../middleware/isLoggedOut");
 const router = express.Router();
 const Restaurant = require("../models/Restaurant.model");
 const User = require("../models/User.model");
+const Collection = require("../models/Collection.model");
+
+
 
 router.post('/:id/wishlist',isLoggedIn, async (req, res, next) => {
 	try {
@@ -103,6 +107,21 @@ router.post('/:id/favorites',isLoggedIn, async (req, res, next) => {
 		next(error);
 	}
 });
+
+router.post('/:id/create-collection/', isLoggedIn, async (res, req, next) => {
+	try {
+		console.log(req.session)
+		console.log(req.session.currentUser)
+		const { _id } = req.session.currentUser;
+		const{name} = req.body;
+		const newCollection = await Collection.create({name})
+		await User.findByIdAndUpdate(_id, {$push: {collections: newCollection._id}})
+		res.redirect(`/${_id}/collections`)
+	} catch (error) {
+		console.log(error);
+		next(error);
+	}
+})
 
 
 
