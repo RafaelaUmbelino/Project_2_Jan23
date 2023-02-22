@@ -108,7 +108,7 @@ router.get("/restaurant/:id", isLoggedIn, async (req, res, next) => {
     let { id } = req.session.currentUser;
     const removeFavorite = await User.findByIdAndUpdate({ id }.populate("favorites"), {$pull: Restaurant.findById(req.params.id)})
 
-    res.render("auth/favorites", {removeFavorite});
+    res.redirect("/:id/favorites");
 
 });
 
@@ -116,7 +116,7 @@ router.post ('/:id/delete', async (req,res,next)=> {
     let { id } = req.session.currentUser;
     const removeWishlist = await User.findByIdAndUpdate({ id }.populate("wishlist"), {$pull: Restaurant.findById(req.params.id)})
 
-    res.render("auth/wishlist", {removeWishlist});
+    res.redirect("/:id/wishlist");
 
 }); */
 
