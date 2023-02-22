@@ -2,35 +2,55 @@
 
 <div class='container'>
   <div class='row'>
-<form>
+
+
     {{#each wishlist}}
+
       <div class='card' style='width: 18rem;'>
         <div class='card-body'>
-        <img src="{{photos}}" alt="{{name}} photo" class="">
-          <h5 class='card-title'>{{name}}</h5>
-          <p class='card-text'>{{price_level}}</p>
-          <p class='card-text'>{{rating}}</p>
-          <a href="{{url}} " class="href">View on Maps</a>
-          <a href="{{website}} " class="href">Visit Website</a>
-          <p class='card-text'>{{formatted_address}}</p>
-          <a href="{{review}} " class="href">View Comments</a>
+          <img src="{{photos}}" alt="{{name}} photo" class="">
+            <h5 class='card-title'>{{name}}</h5>
+            <p class='card-text'>{{price_level}}</p>
+            <p class='card-text'>{{rating}}</p>
+            <a href="{{url}} " class="href">View on Maps</a>
+            <a href="{{website}} " class="href">Visit Website</a>
+            <p class='card-text'>{{formatted_address}}</p>
+            <a href="{{review}} " class="href">View Comments</a>
+
+            <form action="/wishtofavorites/{{this._id}}" method="post" class="">
+              <button type="submit">Add to Favorites</button>
+            </form>
+
+            <form action="/{{this._id}}/deleteWishlist" method="post" class="">
+              <button type="submit">Delete Restaurant</button>
+            </form>
         </div>
       </div>
 
-        <form action="/wishtofavorites/{{this._id}}" method="post" class="">
+        
 
-          <button type="submit">Add to Favorites</button>
+         <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Add to collections
+          </button>
+          <ul class="dropdown-menu">
 
-          </form>
+            {{#each ../collections}}
+              <li class='dropdown-item'>
+                <form action="/{{this._id}}/add-to-collection" method='post'>
+                  <input type="text" name='restaurant' id='restaurant' value='{{../_id}}' hidden>
+                  <button type='submit'>Add to {{this.name}} collection</button>
+                </form>
+              </li>
+            {{/each}}
 
-           <form action="/{{this._id}}/deleteWishlist" method="post" class="">
-
-          <button type="submit">Delete Restaurant</button>
-
-          </form>
-
-
+          </ul>
+        </div>
     {{/each}}
+
+
+
+    
   </div>
 </div>
     {{#if errorMessage}}
