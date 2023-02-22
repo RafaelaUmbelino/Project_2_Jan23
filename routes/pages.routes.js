@@ -16,11 +16,11 @@ const Review = require("../models/Review.model");
 
 
 router.get("/:id/favorites", isLoggedIn, async (req, res, next) => {
-  // aceder só ao id do user, para aceder à lista e fazer o populate.
+
   try {
     let { _id } = req.session.currentUser;
 
-    const user = await User.findById(_id).populate("favorites");
+    const user = await User.findById(_id).populate("favorites collections");
 
     res.render("auth/favorites",  user );
   } catch (error) {
@@ -32,15 +32,13 @@ router.get("/:id/favorites", isLoggedIn, async (req, res, next) => {
 
 router.get("/:id/wishlist", isLoggedIn, async (req, res, next) => {
   try {
-    // aceder só ao id do user, para aceder à lista e fazer o populate.
 
     let { _id } = req.session.currentUser;
 
-    const userWishlist = await User.findById(_id).populate("wishlist");
+    const user = await User.findById(_id).populate("wishlist collections");
 
-    
 
-    res.render("auth/wishlist", userWishlist);
+    res.render("auth/wishlist", user);
   } catch (error) {
     console.log(error);
     next(error);
@@ -50,7 +48,9 @@ router.get("/:id/wishlist", isLoggedIn, async (req, res, next) => {
 router.get("/:id/collections", isLoggedIn, async (req, res, next) => {
   try {
     let { _id } = req.session.currentUser;
+    console.log(req.session.currentUser)
     const user = await User.findById(_id).populate("collections");
+    console.log(user);
     res.render("auth/user-collections", user);
   } catch (error) {
     console.log(error);
@@ -61,6 +61,7 @@ router.get("/:id/collections", isLoggedIn, async (req, res, next) => {
 router.get("/collection/:id", isLoggedIn, async (req, res, next) => {
   try {
     let { id } = req.params;
+    console.log(req.params);
     const collection = await Collection.findById(id).populate("restaurants");
     res.render("auth/collection-details", collection);
   } catch (error) {

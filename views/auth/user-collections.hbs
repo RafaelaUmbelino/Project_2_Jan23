@@ -1,17 +1,18 @@
 <h1>My collections</h1>
 
+<form action='/{{_id}}/create-collection' method='post' >
+  <label for="name">Create a collection</label>
+  <input type='text' name='name' id='name'>
+  <button type='submit'>Create</button>
+</form>
+
+
 <div class='container'>
   <div class='row'>
 
-    <form action="/{{_id}}/create-collection" method='post'>
-      <label for="name">Create a collection</label>
-      <input type="text" name='name' id='name' placeholder="name...">
-      <button type='submit'>Create</button>
-    </form>
-
     {{#each collections}}
-        <form action="/collection/{{this._id}}">
-            <button type="submit" method='get'><h2>{{name}}</h2></button>
+        <form action="/collection/{{this._id}}" method='get'>
+            <button type="submit"><h2>{{name}}</h2></button>
         </form>
     {{/each}}
   </div>
