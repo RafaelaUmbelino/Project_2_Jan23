@@ -104,22 +104,22 @@ function onPlaceChanged() {
 		favslistForm.appendChild(favslistSubmit)
 		
     	const favs_form_place_id = document.getElementById('favs_form_place_id')
-		if (favs_form_place_id) {favs_form_place_id.value = place_id}
+		if (place_id) {favs_form_place_id.value = place_id}
     	const favs_form_name = document.getElementById('favs_form_name');
-		if (favs_form_name) {favs_form_name.value = name}
+		if (name) {favs_form_name.value = name}
 		const favs_form_opening_hours = document.getElementById('favs_form_opening_hours');
-		if (favs_form_opening_hours) {favs_form_opening_hours.value = opening_hours}
+		if (opening_hours) {favs_form_opening_hours.value = opening_hours}
 		const favs_form_photos = document.getElementById('favs_form_photos');
-		if (favs_form_photos) {favs_form_photos.value = photos}
+		if (photoUrl) {favs_form_photos.value = photoUrl}
 		const favs_form_price_level = document.getElementById('favs_form_price_level');
-		if (favs_form_price_level) {favs_form_price_level.value = price_level}
+		if (price_level) {favs_form_price_level.value = price_level}
 		const favs_form_rating = document.getElementById('favs_form_rating');
-		if (favs_form_rating) {favs_form_rating.value = rating}
+		if (rating) {favs_form_rating.value = rating}
 		const favs_form_url = document.getElementById('favs_form_url');
-		if (favs_form_url) {favs_form_url.value = url}
+		if (url) {favs_form_url.value = url}
 		const favs_form_formatted_address = document.getElementById('favs_form_formatted_address');
-		if (favs_form_formatted_address) {favs_form_formatted_address.value = formatted_address}
+		if (formatted_address) {favs_form_formatted_address.value = formatted_address}
 		const favs_form_website = document.getElementById('favs_form_website');
-		if (favs_form_website) {favs_form_website.value = website}
+		if (website) {favs_form_website.value = website}
 	}
 }
