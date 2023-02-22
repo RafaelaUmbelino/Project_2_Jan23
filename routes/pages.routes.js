@@ -61,7 +61,7 @@ router.get("/:id/collections", isLoggedIn, async (req, res, next) => {
 router.get("/collection/:id", isLoggedIn, async (req, res, next) => {
   try {
     let { id } = req.params;
-    const collection = await Collection.findById(_id).populate("restaurants");
+    const collection = await Collection.findById(id).populate("restaurants");
     res.render("auth/collection-details", collection);
   } catch (error) {
     console.log(error);
