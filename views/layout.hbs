@@ -12,29 +12,38 @@
   <body>
 
     <nav>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/{{_id}}/favorites" class="href">Favorites</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/{{_id}}/wishlist" class="href">Wishlist</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/{{_id}}/collections" class="href">My Collections</a>
-        </li>
-     
-       
-        {{!-- <li class="nav-item dropdown">
+      <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+          <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/{{_id}}/favorites" class="href">Favorites</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/{{_id}}/wishlist" class="href">Wishlist</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/{{_id}}/collections" class="href">My Collections</a>
+            </li> 
+          </ul>
+        <form class="d-flex" role="search">
+          <a class="signup" href="/auth/signup">Sign up</a>
+          <a class="login" href="/auth/login">Login</a>
+        </form>
+        <form action="/auth/logout" method="get">
+          <a><button type="submit">Logout</button></a>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+{{!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Link
           </a>
@@ -45,24 +54,7 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li> --}}
-        
-      </ul>
-      <form class="d-flex" role="search">
-         
-          <a class="signup" href="/auth/signup">Sign up</a>
-       
-        
-          <a class="login" href="/auth/login">Login</a>
-        
-           
 
-      </form>
-      <form action="/auth/logout" method="get">
-        <a <button type="submit">Logout</button></a>
-      </form>
-    </div>
-  </div>
-</nav>
       {{!-- <a href="/">Home</a>
       <a href="/{{_id}}/favorites" class="href">Favorites</a>
       <a href="/{{_id}}/wishlist" class="href">Wishlist</a>
