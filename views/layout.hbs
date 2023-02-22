@@ -14,7 +14,7 @@
     <nav>
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar scroll</a>
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,17 +32,8 @@
         <li class="nav-item">
           <a class="nav-link" href="/{{_id}}/collections" class="href">My Collections</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/auth/signup">Sign up</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/auth/login">Login</a>
-        </li>
-        <li class="nav-item">
-           <form action="/auth/logout" method="get">
-        <button type="submit">logout</button>
-      </form>
-        </li>
+     
+       
         {{!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Link
@@ -57,8 +48,17 @@
         
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+         
+          <a class="signup" href="/auth/signup">Sign up</a>
+       
+        
+          <a class="login" href="/auth/login">Login</a>
+        
+           
+
+      </form>
+      <form action="/auth/logout" method="get">
+        <a <button type="submit">Logout</button></a>
       </form>
     </div>
   </div>
@@ -66,13 +66,13 @@
       {{!-- <a href="/">Home</a>
       <a href="/{{_id}}/favorites" class="href">Favorites</a>
       <a href="/{{_id}}/wishlist" class="href">Wishlist</a>
-      <a href="/{{_id}}/collections" class="href">My Collections</a>
-      <a href="/auth/signup">Sign up</a>
+      <a href="/{{_id}}/collections" class="href">My Collections</a> --}}
+      {{!-- <a href="/auth/signup">Sign up</a>
       <a href="/auth/login">Login</a>
       <form action="/auth/logout" method="get">
         <button type="submit">logout</button>
-      </form>
-    </nav> --}}
+      </form> --}}
+    {{!-- </nav> --}}
 
     {{{body}}}
 

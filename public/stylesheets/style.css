@@ -10,3 +10,23 @@ a {
 h1 {
   color: 15px;
 }
+
+.photos{
+
+  width: 250px;
+
+}
+
+.bigPhoto{
+  width: 700px;
+}
+
+.signup{
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.login{
+  margin-right: 10px;
+  text-decoration: none;
+}
