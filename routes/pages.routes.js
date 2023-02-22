@@ -104,20 +104,40 @@ router.get("/restaurant/:id", isLoggedIn, async (req, res, next) => {
 
 //Delete button apenas nas listas do user fetch
 
-/* router.post ('/:id/delete', async (req,res,next)=> {
-    let { id } = req.session.currentUser;
-    const removeFavorite = await User.findByIdAndUpdate({ id }.populate("favorites"), {$pull: Restaurant.findById(req.params.id)})
+ router.post ('/:id/deleteFavorites', async (req,res,next)=> {
+  try {
+    let restaurantId = req.params.id;
+    let { _id } = req.session.currentUser;
 
-    res.redirect("/:id/favorites");
+    const removeFavorite = await User.findByIdAndUpdate({ _id }, {$pull: {favorites: restaurantId}});
+  
+      res.redirect(`/${_id}/favorites`);
+    
+  } catch (error) {
+    console.log(error);
+    next(error);
+    
+  }
+
+
 
 });
 
-router.post ('/:id/delete', async (req,res,next)=> {
-    let { id } = req.session.currentUser;
-    const removeWishlist = await User.findByIdAndUpdate({ id }.populate("wishlist"), {$pull: Restaurant.findById(req.params.id)})
 
-    res.redirect("/:id/wishlist");
+router.post ('/:id/deleteWishlist', async (req,res,next)=> {
+  try {
+    let restaurantId = req.params.id;
+    let { _id } = req.session.currentUser;
 
-}); */
+    const removeWishlist = await User.findByIdAndUpdate({ _id }, {$pull: {wishlist: restaurantId}});
+  
+      res.redirect(`/${_id}/wishlist`);
+    
+  } catch (error) {
+    console.log(error);
+    next(error);
+    
+  }
+});
 
 module.exports = router;
