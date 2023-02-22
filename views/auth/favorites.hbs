@@ -2,11 +2,11 @@
 
 <div class='container'>
   <div class='row'>
-<form>
+
     {{#each favorites}}
       <div class='card' style='width: 18rem;'>
         <div class='card-body'>
-          <img src="{{photos}}" alt="{{name}} photo" class="">
+          <img src="{{photos}}" alt="{{name}} photo" class="photos">
           <h5 class='card-title'>{{name}}</h5>
           <p class='card-text'>{{price_level}}</p>
           <p class='card-text'>{{rating}}</p>
@@ -15,21 +15,34 @@
           <p class='card-text'>{{formatted_address}}</p>
 
           <form action="/restaurant/{{this._id}}" method="get" class="">
-
-          <button type="submit">Comments</button>
-
+            <button type="submit">Comments</button>
           </form>
 
           <form action="/{{this._id}}/deleteFavorites" method="post" class="">
-
-          <button type="submit">Delete Restaurant</button>
-
+            <button type="submit">Delete Restaurant</button>
           </form>
-
-          
         </div>
       </div>
+
+      <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Add to collections
+          </button>
+          <ul class="dropdown-menu">
+
+            {{#each ../collections}}
+              <li class='dropdown-item'>
+                <form action="/{{this._id}}/add-to-collection" method='post'>
+                  <input type="text" name='restaurant' id='restaurant' value='{{../_id}}' hidden>
+                  <button type='submit'>Add to {{this.name}} collection</button>
+                </form>
+              </li>
+            {{/each}}
+            
+          </ul>
+        </div>
     {{/each}}
+
   </div>
 </div>
     {{#if errorMessage}}

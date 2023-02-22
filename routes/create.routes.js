@@ -1,8 +1,8 @@
 const express = require('express');
 const isLoggedIn = require('../middleware/isLoggedIn');
+const isLoggedOut = require("../middleware/isLoggedOut");
 const router = express.Router();
-/* const isLoggedOut = require("../middleware/isLoggedOut"); */
-/* const Collection = require("../models/Collection.model"); */
+const Collection = require("../models/Collection.model");
 const Restaurant = require("../models/Restaurant.model");
 const User = require("../models/User.model");
 
@@ -113,10 +113,8 @@ router.post('/:id/favorites',isLoggedIn, async (req, res, next) => {
 	}
 });
 
-router.post('/:id/create-collection/', isLoggedIn, async (res, req, next) => {
+router.post('/:id/create-collection', isLoggedIn, async (req, res, next) => {
 	try {
-		console.log(req.session)
-		console.log(req.session.currentUser)
 		const { _id } = req.session.currentUser;
 		const{name} = req.body;
 		const newCollection = await Collection.create({name})
@@ -127,6 +125,19 @@ router.post('/:id/create-collection/', isLoggedIn, async (res, req, next) => {
 		next(error);
 	}
 })
+
+router.post('/:id/add-to-collection', isLoggedIn, async (req, res, next) => {
+	console.log(req.body)
+try {
+	const collectionId = req.params.id;
+	const restaurantId = req.body.restaurant;
+	await Collection.findByIdAndUpdate(collectionId, {$push: {restaurants: restaurantId}})
+} catch (error) {
+	console.log(error);
+	next(error);
+}
+})
+
 
 
 
