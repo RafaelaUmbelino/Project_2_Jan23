@@ -19,7 +19,7 @@
       </div>
 
       <button class='mobile-nav-toggle' aria-controls='primary-navigation' aria-expanded='false'><span class='sr-only'>Menu</span></button>
-
+        
       <nav>
         <ul id="primary-navigation" class='primary-navigation flex' data-visible='false'>
           <li>
@@ -34,21 +34,28 @@
           <li>
             <a href="/{{_id}}/collections">My Collections</a>
           </li>
+          {{#unless _id}}
           <li>
             <a href="/auth/signup">Sign up</a>
           </li>
           <li>
             <a href="/auth/login">Login</a>
           </li>
+          {{/unless}}
+          {{#if _id}}
           <li>
-              <form action="/auth/logout" method="get">
-                <a><button type="submit" id='logout-btn'>Logout</button></a>
+            <p>Welcome {{username}}</p>
+          </li>
+          <li>
+              <form action="/auth/logout" method="get" class='flex'>
+                <button type="submit" id='logout-btn'>Logout</button>
               </form>
           </li>
+          {{/if}}
         </ul>
       </nav>
-    </header>
-    
+    </header>      
+         
 
     {{{body}}}
 
