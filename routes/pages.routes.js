@@ -13,7 +13,7 @@ const Review = require("../models/Review.model");
 //   res.render("restaurantDetails");
 // });
 
-router.get("/:id/favorites", isLoggedIn, async (req, res, next) => {
+router.get("/favorites/:id", isLoggedIn, async (req, res, next) => {
   try {
     let { _id } = req.session.currentUser;
     const user = await User.findById(_id).populate("favorites collections");
@@ -26,7 +26,7 @@ router.get("/:id/favorites", isLoggedIn, async (req, res, next) => {
 });
 //
 
-router.get("/:id/wishlist", isLoggedIn, async (req, res, next) => {
+router.get("/wishlist/:id", isLoggedIn, async (req, res, next) => {
   try {
     let { _id } = req.session.currentUser;
 
@@ -39,7 +39,7 @@ router.get("/:id/wishlist", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.get("/:id/collections", isLoggedIn, async (req, res, next) => {
+router.get("/collections/:id", isLoggedIn, async (req, res, next) => {
   try {
     let { _id } = req.session.currentUser;
     const user = await User.findById(_id).populate("collections");
@@ -61,7 +61,7 @@ router.get("/collection/:id", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.get("/restaurant/:id", isLoggedIn, async (req, res, next) => {
+/* router.get("/restaurant/:id", isLoggedIn, async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -72,7 +72,7 @@ router.get("/restaurant/:id", isLoggedIn, async (req, res, next) => {
     console.log(error);
     next(error);
   }
-});
+}); */
 
 //----------------------------------------------------------------------- POST/EDIT ROUTES ⤵
 
@@ -106,8 +106,6 @@ router.post("/wishtofavorites/:id", isLoggedIn, async (req, res, next) => {
 }); */
 
 //----------------------------------------------------------------------- DELETE ROUTES ⤵
-
-//Delete button apenas nas listas do user fetch
 
 router.post("/:id/deleteFavorites", async (req, res, next) => {
   try {
