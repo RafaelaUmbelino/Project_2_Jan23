@@ -9,6 +9,7 @@ const User = require("../models/User.model");
 
 
 
+
 router.post('/:id/wishlist',isLoggedIn, async (req, res, next) => {
 	try {
 		const { _id } = req.session.currentUser;
@@ -32,8 +33,8 @@ router.post('/:id/wishlist',isLoggedIn, async (req, res, next) => {
 				if (!(userWishlist.includes(restaurantSearched._id))) {
 					await User.findByIdAndUpdate(_id, {$push: {wishlist: restaurantSearched._id}})
 					console.log('restaurant found')
-					res.redirect(`/${_id}/wishlist`)
-				} else res.redirect(`/${_id}/wishlist`)
+					res.redirect(`/wishlist/${_id}`)
+				} else res.redirect(`/wishlist/${_id}`)
 
 			} else {
 				console.log("no restaurant found")
@@ -51,7 +52,7 @@ router.post('/:id/wishlist',isLoggedIn, async (req, res, next) => {
 				const newRestaurant = await Restaurant.findOne({ place_id });
 				await User.findByIdAndUpdate(_id, {$push: {wishlist: newRestaurant._id}})
 				console.log(newRestaurant);
-				res.redirect(`/${_id}/wishlist`)
+				res.redirect(`/wishlist/${_id}`)
 			}
 
 	} catch (error) {
@@ -85,8 +86,8 @@ router.post('/:id/favorites',isLoggedIn, async (req, res, next) => {
 				if (!(userFavsList.includes(restaurantSearched._id))) {
 					await User.findByIdAndUpdate(_id, {$push: {favorites: restaurantSearched._id}})
 					console.log('restaurant found')
-					res.redirect(`/${_id}/favorites`)
-				} else res.redirect(`/${_id}/favorites`)
+					res.redirect(`/favorites/${_id}`)
+				} else res.redirect(`/favorites/${_id}`)
 				
 			} else {
 				console.log("no restaurant found")
@@ -104,7 +105,7 @@ router.post('/:id/favorites',isLoggedIn, async (req, res, next) => {
 				const newRestaurant = await Restaurant.findOne({ place_id });
 				await User.findByIdAndUpdate(_id, {$push: {favorites: newRestaurant._id}})
 				console.log(newRestaurant);
-				res.redirect(`/${_id}/favorites`)
+				res.redirect(`/favorites/${_id}`)
 			}
 
 	} catch (error) {
@@ -119,7 +120,7 @@ router.post('/:id/create-collection', isLoggedIn, async (req, res, next) => {
 		const{name} = req.body;
 		const newCollection = await Collection.create({name})
 		await User.findByIdAndUpdate(_id, {$push: {collections: newCollection._id}})
-		res.redirect(`/${_id}/collections`)
+		res.redirect(`/collections/${_id}`)
 	} catch (error) {
 		console.log(error);
 		next(error);

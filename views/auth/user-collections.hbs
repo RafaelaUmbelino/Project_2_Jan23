@@ -1,22 +1,31 @@
-<h1>My collections</h1>
+<h1 class="collectionsTitle">My collections</h1>
+
+<div class='container'>
+  <div class='row'>
 
 <form action='/{{_id}}/create-collection' method='post' >
-  <label for="name">Create a collection</label>
-  <input type='text' name='name' id='name'>
+  <label for="name" ></label>
+  <input class="createCollectionBar" placeholder="Create a collection"type='text' name='name' id='name'>
   <button type='submit'>Create</button>
 </form>
 
+</div>
 
 <div class='container'>
   <div class='row'>
 
     {{#each collections}}
-        <form action="/collection/{{this._id}}" method='get'>
-            <button type="submit"><h2>{{name}}</h2></button>
-        </form>
+      
+        <a href="/collection/{{this._id}}" class="myCollectionButton"><h2>My Collection:     {{name}}</h2></a>
+
         <form action="/collection/{{this._id}}/delete" method="post">
-         <button type="submit">Delete Collection</button>
+         <button type="submit" class="btn btn-dark" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"> Delete Collection</button>
         </form>
+        <div class="hr-theme-slash-2">
+       <div class="hr-line"></div>
+       <div class="hr-icon"><img src="/images/e-icon.png" alt="imageE" class="material-icons"></div>
+      <div class="hr-line"></div>
+</div>
     {{/each}}
   </div>
 </div>
@@ -25,3 +34,4 @@
     {{/if}}
 
 </div>
+

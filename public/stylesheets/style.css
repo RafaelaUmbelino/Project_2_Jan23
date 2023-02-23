@@ -93,6 +93,7 @@ body {
   background-position: 100% 0;
   background-attachment: fixed;
   font-family: 'Archivo', sans-serif;
+  color: white;
 }
 
 .photos{
@@ -108,6 +109,22 @@ body {
 .flex {
   display: flex;
   gap: var(--gap, 1rem)
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.align-flex-start {
+  align-items: flex-start;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.pad-left-10 {
+  padding-left: 10px;;
 }
 
 .grid {
@@ -126,7 +143,31 @@ body {
   width:1px;
   height:1px;
   overflow:hidden;
-  }
+}
+
+h1 {
+  margin: 30px 50px;
+  border-bottom: 2px solid white;
+  width: 30vw;
+}
+
+.small-text {
+  font-style:italic;
+  font-size: 0.8rem;
+}
+
+.light-gray {
+  color: #abafb2;
+}
+
+.z-index {
+  z-index: 3000;
+}
+
+.full-height {
+  height: 100%;
+  margin: 0;
+}
 
 /* ----------------------------------------------------------------------- NAVBAR ⤵ */
 
@@ -232,6 +273,7 @@ body {
   .mobile-nav-toggle[aria-expanded="true"] {
     background-image: url("../images/x-menu.png");
   }
+
   
 }
 
@@ -256,4 +298,207 @@ body {
 .search-results {
   flex-direction: column;
   color: white;
+}
+
+.search-container a {
+  text-decoration: none;
+  color:#BFA05F;
+}
+
+.index-buttons {
+  flex: 1;
+}
+
+.index-buttons > form {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.index-buttons > form > button {
+  width: 100%;
+  flex-grow: 1;
+}
+
+#res-photo {
+  max-height: 500px;
+  width: auto;
+}
+
+#wish-submit {
+  color: white;
+  background-color: #BFA05F;
+  font-family: 'Archivo Narrow', sans-serif;
+  border: none;
+}
+
+#favs-submit {
+  color: white;
+  background-color: #BFA05F;
+  font-family: 'Archivo Narrow', sans-serif;
+  border: none;
+}
+
+/* ----------------------------------------------------------------------- LISTS ⤵ */
+.restaurant-page {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.restaurant-container {
+  margin: 30px;
+  background-color: #000000bb;
+  width: 400px;
+/*   width: max-content; */
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+
+@supports (backdrop-filter: blur(0.5rem)) {
+  .restaurant-container {
+    background-color: #1d1c1bb3;
+    backdrop-filter: blur(0.5rem);
+  }
+}
+
+.restaurant-container > div {
+  margin: 10px;
+/*   width: 100%; */
+}
+
+.restaurant-heading {
+  padding-right: 40px;
+}
+
+.center-container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.center-container img {
+  max-height: 300px;
+  width: auto;
+}
+
+.center-container > div {
+  width: 100%;
+}
+
+.center-container a {
+  text-decoration: none;
+  color:#BFA05F;
+}
+
+#x-btn {
+  display: block;
+  background-image: url("../images/x-menu.png");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 0;
+  width: 2rem;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+}
+
+.dropdown-toggle {
+  z-index: 3000;
+  margin: 10px 0;
+}
+
+.button-round {
+  width: 2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+#add-favorite-btn {
+  display: block;
+  background-image: url("../images/white-heart.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 0;
+  width: 2rem;
+  aspect-ratio: 1;
+}
+
+
+
+
+
+/* .primary-navigation {
+  font-family: 'Archivo Narrow', sans-serif;
+  list-style: none;
+  padding: 0 15px;
+  margin: 0;
+  background: #000000bb;
+  align-items: center;
+} */
+
+
+/* ----------------------------------------------------------------------- HORIZONTAL RULER COLLECTIONS⤵ */
+
+.hr-theme-slash-2 {
+  display: flex;
+
+}
+  
+  .hr-line {
+    width: 50%;
+    position: relative;
+    margin: 15px;
+    border-bottom: 1px solid white;
+  }
+  .hr-icon {
+    position: relative;
+    top: 3px;
+    color:white;
+    
+  }
+
+  .material-icons{
+    width: 30px;
+  }
+
+
+  .myCollectionButton{
+    text-decoration: none;
+    color: #BFA05F;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 3em;
+   
+  -webkit-text-stroke: 1px black;
+}
+
+
+.createCollectionBar{
+  height: 26px;
+  padding: 0 10px;
+  min-width: 30vw;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 15px;
+}
+
+.message404{
+  
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+
+}
+
+.text404{
+  margin: 10px;
+}
+
+.text4041{
+  margin-bottom: 20px;
 }

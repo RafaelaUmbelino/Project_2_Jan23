@@ -25,15 +25,36 @@
           <li>
             <a href="/">Home</a>
           </li>
-          <li>
-            <a href="/{{_id}}/favorites">Favorites</a>
-          </li>
-          <li>
-            <a href="/{{_id}}/wishlist">Wishlist</a>
-          </li>
-          <li>
-            <a href="/{{_id}}/collections">My Collections</a>
-          </li>
+          {{#if _id}}
+            <li>
+              <a href="/favorites/{{_id}}">Favorites</a>
+            </li>
+          {{/if}}
+          {{#unless _id}}
+            <li>
+              <a href="/auth/login">Favorites</a>
+            </li>
+          {{/unless}}
+          {{#if _id}}
+            <li>
+              <a href="/wishlist/{{_id}}">Wishlist</a>
+            </li>
+          {{/if}}
+          {{#unless _id}}
+            <li>
+              <a href="/auth/login">Wishlist</a>
+            </li>
+          {{/unless}}
+          {{#if _id}}
+            <li>
+              <a href="/collections/{{_id}}">My Collections</a>
+            </li>
+          {{/if}}
+          {{#unless _id}}
+            <li>
+              <a href="/auth/login">My collections</a>
+            </li>
+          {{/unless}}
           {{#unless _id}}
           <li>
             <a href="/auth/signup">Sign up</a>

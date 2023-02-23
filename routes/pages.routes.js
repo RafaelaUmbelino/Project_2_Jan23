@@ -5,7 +5,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 const Restaurant = require("../models/Restaurant.model");
 const User = require("../models/User.model");
 const Collection = require("../models/Collection.model");
-const Review = require("../models/Review.model");
+
 
 //----------------------------------------------------------------------- GET ROUTES ⤵
 
@@ -13,7 +13,7 @@ const Review = require("../models/Review.model");
 //   res.render("restaurantDetails");
 // });
 
-router.get("/:id/favorites", isLoggedIn, async (req, res, next) => {
+router.get("/favorites/:id", isLoggedIn, async (req, res, next) => {
   try {
     let { _id } = req.session.currentUser;
     const user = await User.findById(_id).populate("favorites collections");
@@ -26,7 +26,7 @@ router.get("/:id/favorites", isLoggedIn, async (req, res, next) => {
 });
 //
 
-router.get("/:id/wishlist", isLoggedIn, async (req, res, next) => {
+router.get("/wishlist/:id", isLoggedIn, async (req, res, next) => {
   try {
     let { _id } = req.session.currentUser;
 
@@ -39,7 +39,7 @@ router.get("/:id/wishlist", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.get("/:id/collections", isLoggedIn, async (req, res, next) => {
+router.get("/collections/:id", isLoggedIn, async (req, res, next) => {
   try {
     let { _id } = req.session.currentUser;
     const user = await User.findById(_id).populate("collections");
@@ -61,7 +61,7 @@ router.get("/collection/:id", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.get("/restaurant/:id", isLoggedIn, async (req, res, next) => {
+/* router.get("/restaurant/:id", isLoggedIn, async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -72,7 +72,7 @@ router.get("/restaurant/:id", isLoggedIn, async (req, res, next) => {
     console.log(error);
     next(error);
   }
-});
+}); */
 
 //----------------------------------------------------------------------- POST/EDIT ROUTES ⤵
 
@@ -85,7 +85,7 @@ router.post("/wishtofavorites/:id", isLoggedIn, async (req, res, next) => {
       $push: { favorites: restaurantId },
     });
 
-    res.redirect(`/${userId}/favorites`);
+    res.redirect(`/favorites/${userId}`);
   } catch (error) {
     console.log(error);
     next(error);
@@ -107,8 +107,6 @@ router.post("/wishtofavorites/:id", isLoggedIn, async (req, res, next) => {
 
 //----------------------------------------------------------------------- DELETE ROUTES ⤵
 
-//Delete button apenas nas listas do user fetch
-
 router.post("/:id/deleteFavorites", async (req, res, next) => {
   try {
     let restaurantId = req.params.id;
@@ -119,7 +117,7 @@ router.post("/:id/deleteFavorites", async (req, res, next) => {
       { $pull: { favorites: restaurantId } }
     );
 
-    res.redirect(`/${_id}/favorites`);
+    res.redirect(`/favorites/${_id}`);
   } catch (error) {
     console.log(error);
     next(error);
@@ -136,7 +134,7 @@ router.post("/:id/deleteWishlist", async (req, res, next) => {
       { $pull: { wishlist: restaurantId } }
     );
 
-    res.redirect(`/${_id}/wishlist`);
+    res.redirect(`/wishlist/${_id}`);
   } catch (error) {
     console.log(error);
     next(error);
@@ -152,7 +150,7 @@ router.post("/collection/:id/delete", async (req, res, next) => {
     console.log(req.session.currentUser);
 
     await Collection.findByIdAndDelete(id);
-    res.redirect(`/${userId}/collections`);
+    res.redirect(`/collections/${userId}`);
   } catch (error) {
     console.log(error);
     next(error);

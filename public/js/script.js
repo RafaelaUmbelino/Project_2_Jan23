@@ -16,7 +16,9 @@ function initAutocomplete() {
 				'place_id',
 				'name',
 				'photos',
-				/* 'opening_hours',  'price_level', 'rating', */ 'url',
+				'rating',
+				'price_level',
+				'url',
 				'formatted_address',
 				'website',
 			],
@@ -34,7 +36,6 @@ function onPlaceChanged() {
 	let {
 		place_id,
 		name,
-		opening_hours,
 		photos,
 		price_level,
 		rating,
@@ -53,6 +54,8 @@ function onPlaceChanged() {
 		document.getElementById('res-maps-url').innerHTML = 'Google Maps site';
 		let photoUrl = photos[0].getUrl();
 		document.getElementById('res-photo').setAttribute('src', photoUrl);
+		if (rating) document.getElementById('res-rating').innerHTML = `Google rating: ${rating} / 5`;
+		if (price_level) document.getElementById('res-price-level').innerHTML = `Price level: ${price_level} / 5`;
 		if (website) {
 			document
 				.getElementById('res-website')
@@ -60,28 +63,24 @@ function onPlaceChanged() {
 			document.getElementById('res-website').innerHTML = 'Website';
 		}
     
-		/*     document.getElementById('res-rating').innerHTML = rating;
-    	document.getElementById('res-price-level').innerHTML = price_level; */
-
-		/*     document.getElementById('res-photo').innerHTML = place.photos[0].photo_reference;
-    	document.getElementById('res-photo').setAttribute('href', place.url.photos[0].getUrl());
-    	document.getElementById('res-photo').innerHTML = 'photo';
-    	console.log(place.opening_hours) */
 
 //----------------------------------------------------------------------- CREATING WISHLIST FORM ⤵
 
-		let wishlistForm = document.getElementById('wishlist-add');
-		let wishlistSubmit = document.createElement('button')
+		const wishlistForm = document.getElementById('wishlist-add');
+		if (!(document.getElementById('wish-submit'))) {
+			const  wishlistSubmit = document.createElement('button')
 		wishlistSubmit.innerHTML = 'Add to Wishlist';
 		wishlistSubmit.setAttribute('type', 'submit');
+		wishlistSubmit.setAttribute('id', 'wish-submit')
 		wishlistForm.appendChild(wishlistSubmit)
+		}
+		
+		
 
     	const wish_form_place_id = document.getElementById('wish_form_place_id')
 		if (place_id) {wish_form_place_id.value = place_id}
     	const wish_form_name = document.getElementById('wish_form_name');
 		if (name) {wish_form_name.value = name}
-		const wish_form_opening_hours = document.getElementById('wish_form_opening_hours');
-		if (opening_hours) {wish_form_opening_hours.value = opening_hours}
 		const wish_form_photos = document.getElementById('wish_form_photos');
 		if (photoUrl) {wish_form_photos.value = photoUrl}
 		const wish_form_price_level = document.getElementById('wish_form_price_level');
@@ -97,18 +96,20 @@ function onPlaceChanged() {
 
 //----------------------------------------------------------------------- CREATING FAVORITES FORM ⤵
 
-		let favslistForm = document.getElementById('favorites-add');
-		let favslistSubmit = document.createElement('button')
-		favslistSubmit.innerHTML = 'Add to Favorites';
-		favslistSubmit.setAttribute('type', 'submit');
-		favslistForm.appendChild(favslistSubmit)
+		const favslistForm = document.getElementById('favorites-add');
+		if (!(document.getElementById('favs-submit'))) {
+			const favslistSubmit = document.createElement('button')
+			favslistSubmit.innerHTML = 'Add to Favorites';
+			favslistSubmit.setAttribute('type', 'submit');
+			favslistSubmit.setAttribute('id', 'favs-submit')
+			favslistForm.appendChild(favslistSubmit)
+		}
+		
 		
     	const favs_form_place_id = document.getElementById('favs_form_place_id')
 		if (place_id) {favs_form_place_id.value = place_id}
     	const favs_form_name = document.getElementById('favs_form_name');
 		if (name) {favs_form_name.value = name}
-		const favs_form_opening_hours = document.getElementById('favs_form_opening_hours');
-		if (opening_hours) {favs_form_opening_hours.value = opening_hours}
 		const favs_form_photos = document.getElementById('favs_form_photos');
 		if (photoUrl) {favs_form_photos.value = photoUrl}
 		const favs_form_price_level = document.getElementById('favs_form_price_level');

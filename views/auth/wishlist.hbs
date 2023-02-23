@@ -1,104 +1,55 @@
 <h1>Wishlist</h1>
 
-<div class="container">
-     <div class="row">
-       
-      {{#each wishlist}}
-
-   <div class="col-6 col-md-4">
-   <img src="{{photos}}" alt="{{name}} photo" class="photos">
-    <h5>{{name}}</h5>
-    <p>{{price_level}}</p>
-     <p>{{rating}}</p>
-    <a href="{{url}} " class="href">View on Maps</a>
-     <a href="{{website}} " class="href">Visit Website</a>
-    <p>{{formatted_address}}</p>
-    
-        <form action="/wishtofavorites/{{this._id}}" method="post" class="">
-              <button type="submit">Add to Favorites</button>
-            </form>
-
-            <form action="/{{this._id}}/deleteWishlist" method="post" class="">
-              <button type="submit">Delete Restaurant</button>
-            </form>
-
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Add to collections
-          </button>
-            <ul class="dropdown-menu">
-
-            {{#each ../collections}}
-              <li class='dropdown-item'>
-                <form action="/{{this._id}}/add-to-collection" method='post'>
-                  <input type="text" name='restaurant' id='restaurant' value='{{../_id}}' hidden>
-                  <button type='submit'>Add to {{this.name}} collection</button>
-                </form>
-              </li>
-            {{/each}}
-            
-          </ul>
-          </div>
-      
-        {{/each}}
-
-    </div>
-   </div>
-
-{{!-- <div class='container'>
-  <div class='row'>
-
+<div class="restaurant-page flex">
     {{#each wishlist}}
-
-      <div class='card' style='width: 18rem;'>
-        <div class='card-body'>
-          <img src="{{photos}}" alt="{{name}} photo" class="">
-            <h5 class='card-title'>{{name}}</h5>
-            <p class='card-text'>{{price_level}}</p>
-            <p class='card-text'>{{rating}}</p>
-            <a href="{{url}} " class="href">View on Maps</a>
-            <a href="{{website}} " class="href">Visit Website</a>
-            <p class='card-text'>{{formatted_address}}</p>
-            <a href="{{review}} " class="href">View Comments</a>
-
-            <form action="/wishtofavorites/{{this._id}}" method="post" class="">
-              <button type="submit">Add to Favorites</button>
-            </form>
-
-            <form action="/{{this._id}}/deleteWishlist" method="post" class="">
-              <button type="submit">Delete Restaurant</button>
-            </form>
+    <div class="restaurant-container">
+      <form action="/{{this._id}}/deleteWishlist" method="post" class="">
+        <button id='x-btn' type="submit"><span class='sr-only'>Delete from favorites</span></button>
+      </form>
+      <div class="restaurant-heading">
+        <h2>{{name}}</h5>
+        <p class='small-text'>{{formatted_address}}</p>
+        <div class='flex align-center' >
+          <button class="btn btn-secondary dropdown-toggle button-round" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+            <ul class="dropdown-menu">
+              <p class='pad-left-10'>your collections:</p>
+              {{#each ../collections}}
+                <li class='dropdown-item'>
+                  <form action="/{{this._id}}/add-to-collection" method='post'>
+                    <input type="text" name='restaurant' id='restaurant' value='{{../_id}}' hidden>
+                    <button type='submit'>Add to {{this.name}}</button>
+                  </form>
+                </li>
+              {{/each}}
+            </ul>
+          <form action="/wishtofavorites/{{this._id}}" method="post" class="full-height">
+              <button class="btn btn-danger button-round" id='add-favorite-btn' type="submit"></button>
+          </form>
         </div>
-      </div>
-
         
 
-         <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Add to collections
-          </button>
-          <ul class="dropdown-menu">
-
-            {{#each ../collections}}
-              <li class='dropdown-item'>
-                <form action="/{{this._id}}/add-to-collection" method='post'>
-                  <input type="text" name='restaurant' id='restaurant' value='{{../_id}}' hidden>
-                  <button type='submit'>Add to {{this.name}} collection</button>
-                </form>
-              </li>
-            {{/each}}
-
-          </ul>
+      </div>
+        
+        <div class="center-container flex">
+          <img src="{{photos}}" alt="{{name}} photo" class="photos">
+          <div class='flex align-flex-start pad-left-10 light-gray'>
+            {{#if rating}}
+            <p><span class='small-text'>Google rating: </span> {{rating}} / 5</p>
+            {{/if}}
+            {{#if price_level}}
+            <p><span class='small-text'>Price level: </span> {{price_level}} / 5</p>
+            {{/if}}
+          </div>
+          <div class="flex space-evenly z-index">
+            <a href="{{url}} " class="href">View on Maps</a>
+            <a href="{{website}} " class="href">Visit Website</a>
+          </div>       
         </div>
+        
+          {{!--     
+         <form action="/restaurant/{{this._id}}" method="get" class="">
+            <button type="submit">Comments</button>
+          </form> --}}
+    </div>
     {{/each}}
-
-
-
-    
-  </div>
-</div> --}}
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-
-   
-
+</div>
