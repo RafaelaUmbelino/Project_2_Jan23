@@ -446,3 +446,21 @@ h1 {
   margin: 15px;
 }
 
+.message404{
+  
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+
+}
+
+.text404{
+  margin: 10px;
+}
+
+.text4041{
+  margin-bottom: 20px;
+}
