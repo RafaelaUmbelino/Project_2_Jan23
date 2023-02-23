@@ -93,6 +93,7 @@ body {
   background-position: 100% 0;
   background-attachment: fixed;
   font-family: 'Archivo', sans-serif;
+  color: white;
 }
 
 .photos{
@@ -126,7 +127,13 @@ body {
   width:1px;
   height:1px;
   overflow:hidden;
-  }
+}
+
+h1 {
+  margin: 30px 50px;
+  border-bottom: 2px solid white;
+  width: 30vw;
+}
 
 /* ----------------------------------------------------------------------- NAVBAR ⤵ */
 
@@ -256,4 +263,20 @@ body {
 .search-results {
   flex-direction: column;
   color: white;
+}
+
+/* ----------------------------------------------------------------------- LISTS ⤵ */
+.restaurant-page {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.restaurant-container {
+  margin: 30px;
+  background-color: red;
+  width: 400px;
+/*   width: max-content; */
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
 }

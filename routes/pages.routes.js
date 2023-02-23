@@ -85,7 +85,7 @@ router.post("/wishtofavorites/:id", isLoggedIn, async (req, res, next) => {
       $push: { favorites: restaurantId },
     });
 
-    res.redirect(`/${userId}/favorites`);
+    res.redirect(`/favorites/${userId}`);
   } catch (error) {
     console.log(error);
     next(error);
@@ -117,7 +117,7 @@ router.post("/:id/deleteFavorites", async (req, res, next) => {
       { $pull: { favorites: restaurantId } }
     );
 
-    res.redirect(`/${_id}/favorites`);
+    res.redirect(`/favorites/${_id}`);
   } catch (error) {
     console.log(error);
     next(error);
@@ -134,7 +134,7 @@ router.post("/:id/deleteWishlist", async (req, res, next) => {
       { $pull: { wishlist: restaurantId } }
     );
 
-    res.redirect(`/${_id}/wishlist`);
+    res.redirect(`/wishlist/${_id}`);
   } catch (error) {
     console.log(error);
     next(error);
@@ -150,7 +150,7 @@ router.post("/collection/:id/delete", async (req, res, next) => {
     console.log(req.session.currentUser);
 
     await Collection.findByIdAndDelete(id);
-    res.redirect(`/${userId}/collections`);
+    res.redirect(`/collections/${userId}`);
   } catch (error) {
     console.log(error);
     next(error);

@@ -2,18 +2,51 @@
 <div class="row mt-4">
       <div class="col-lg-6 offset-lg-3"> --}}
         
-<h1>Favorite Restaurants List</h1>
+<h1>Favorites</h1>
+
+<div class="restaurant-page flex">
+    {{#each favorites}}
+    <div class="restaurant-container">
+        <h5>{{name}}</h5>
+        <p>{{formatted_address}}</p>
+        <img src="{{photos}}" alt="{{name}} photo" class="photos">
+        <p>Google rating: {{rating}} / 5</p>
+        <p>Price level:{{price_level}} / 5</p>
+        <a href="{{url}} " class="href">View on Maps</a>
+        <a href="{{website}} " class="href">Visit Website</a>
+
+        <form action="/{{this._id}}/deleteFavorites" method="post" class="">
+          <button type="submit">Delete from favorites</button>
+        </form>
+
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Add to collections</button>
+          <ul class="dropdown-menu">
+            {{#each ../collections}}
+              <li class='dropdown-item'>
+                <form action="/{{this._id}}/add-to-collection" method='post'>
+                  <input type="text" name='restaurant' id='restaurant' value='{{../_id}}' hidden>
+                  <button type='submit'>Add to {{this.name}} collection</button>
+                </form>
+              </li>
+            {{/each}}
+          </ul>
+          {{!--     
+         <form action="/restaurant/{{this._id}}" method="get" class="">
+            <button type="submit">Comments</button>
+          </form> --}}
+    </div>
+    {{/each}}
+</div>
 
 
- {{!-- <div class='row'>
-  <div class='col-md-6 col-lg-4'> --}}
-    <div class="container">
+{{!-- 
+    <div class="container-fluid">
      <div class="row">
        
        
       {{#each favorites}}
 
-   <div class="col-md-6 col-lg-4 bg-light.bg-gradient">
+   <div class="col-md-6 col-lg-4">
    <img src="{{photos}}" alt="{{name}} photo" class="photos">
     <h5>{{name}}</h5>
     <p>{{price_level}}</p>
@@ -21,10 +54,7 @@
     <a href="{{url}} " class="href">View on Maps</a>
      <a href="{{website}} " class="href">Visit Website</a>
     <p>{{formatted_address}}</p>
-{{!--     
-         <form action="/restaurant/{{this._id}}" method="get" class="">
-            <button type="submit">Comments</button>
-          </form> --}}
+
     
     <form action="/{{this._id}}/deleteFavorites" method="post" class="">
       <button type="submit">Delete from favorites</button>
@@ -51,7 +81,7 @@
         {{/each}}
 
     </div>
-   </div>
+   </div> --}}
 
     
 {{!-- 
