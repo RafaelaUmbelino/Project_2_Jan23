@@ -1,7 +1,6 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url("public/images/backgroundPicture.jpg");
 }
 
 a {
@@ -31,3 +30,19 @@ h1 {
   margin-right: 10px;
   text-decoration: none;
 }
+
+.color{
+  background-color: black;
+}
+
+
+
+/* .flexdiv{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  align-content: flex-start;
+  
+} */
