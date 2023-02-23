@@ -12,12 +12,12 @@
         <p class='small-text'>{{formatted_address}}</p>
         <button class="btn btn-secondary dropdown-toggle button-round" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
             <ul class="dropdown-menu">
-              <p class='pad-left-10'>your collections:</p>
+              <p class='pad-left-10 small-text'>your collections:</p>
               {{#each ../collections}}
                 <li class='dropdown-item'>
                   <form action="/{{this._id}}/add-to-collection" method='post'>
                     <input type="text" name='restaurant' id='restaurant' value='{{../_id}}' hidden>
-                    <button type='submit'>Add to {{this.name}}</button>
+                    <button id='add-to-collection-btn' type='submit'>Add to {{this.name}}</button>
                   </form>
                 </li>
               {{/each}}
