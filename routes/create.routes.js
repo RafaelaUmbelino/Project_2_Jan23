@@ -9,6 +9,7 @@ const User = require("../models/User.model");
 
 
 
+
 router.post('/:id/wishlist',isLoggedIn, async (req, res, next) => {
 	try {
 		const { _id } = req.session.currentUser;

@@ -5,7 +5,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 const Restaurant = require("../models/Restaurant.model");
 const User = require("../models/User.model");
 const Collection = require("../models/Collection.model");
-const Review = require("../models/Review.model");
+
 
 //----------------------------------------------------------------------- GET ROUTES ⤵
 
