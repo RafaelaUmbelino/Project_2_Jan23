@@ -54,8 +54,8 @@ function onPlaceChanged() {
 		document.getElementById('res-maps-url').innerHTML = 'Google Maps site';
 		let photoUrl = photos[0].getUrl();
 		document.getElementById('res-photo').setAttribute('src', photoUrl);
-		if (rating) document.getElementById('res-rating').innerHTML = rating;
-		if (price_level) document.getElementById('res-price-level').innerHTML = price_level;
+		if (rating) document.getElementById('res-rating').innerHTML = `Google rating: ${rating} / 5`;
+		if (price_level) document.getElementById('res-price-level').innerHTML = `Price level: ${price_level} / 5`;
 		if (website) {
 			document
 				.getElementById('res-website')
@@ -66,11 +66,16 @@ function onPlaceChanged() {
 
 //----------------------------------------------------------------------- CREATING WISHLIST FORM ⤵
 
-		let wishlistForm = document.getElementById('wishlist-add');
-		let wishlistSubmit = document.createElement('button')
+		const wishlistForm = document.getElementById('wishlist-add');
+		if (!(document.getElementById('wish-submit'))) {
+			const  wishlistSubmit = document.createElement('button')
 		wishlistSubmit.innerHTML = 'Add to Wishlist';
 		wishlistSubmit.setAttribute('type', 'submit');
+		wishlistSubmit.setAttribute('id', 'wish-submit')
 		wishlistForm.appendChild(wishlistSubmit)
+		}
+		
+		
 
     	const wish_form_place_id = document.getElementById('wish_form_place_id')
 		if (place_id) {wish_form_place_id.value = place_id}
@@ -91,11 +96,15 @@ function onPlaceChanged() {
 
 //----------------------------------------------------------------------- CREATING FAVORITES FORM ⤵
 
-		let favslistForm = document.getElementById('favorites-add');
-		let favslistSubmit = document.createElement('button')
-		favslistSubmit.innerHTML = 'Add to Favorites';
-		favslistSubmit.setAttribute('type', 'submit');
-		favslistForm.appendChild(favslistSubmit)
+		const favslistForm = document.getElementById('favorites-add');
+		if (!(document.getElementById('favs-submit'))) {
+			const favslistSubmit = document.createElement('button')
+			favslistSubmit.innerHTML = 'Add to Favorites';
+			favslistSubmit.setAttribute('type', 'submit');
+			favslistSubmit.setAttribute('id', 'favs-submit')
+			favslistForm.appendChild(favslistSubmit)
+		}
+		
 		
     	const favs_form_place_id = document.getElementById('favs_form_place_id')
 		if (place_id) {favs_form_place_id.value = place_id}

@@ -13,27 +13,29 @@
         <p id='res-rating'></p>
         <p id='res-price-level'></p>
 
-        <form action='/{{_id}}/wishlist' method='post' id='wishlist-add'>
-            <input type='text' name='wish_form_place_id' id='wish_form_place_id' value='' hidden/>
-            <input type='text' name='wish_form_name' id='wish_form_name' value='' hidden/>
-            <input type='text' name='wish_form_photos' id='wish_form_photos' value='' hidden/>
-            <input type='text' name='wish_form_price_level' id='wish_form_price_level' value='' hidden/>
-            <input type='text' name='wish_form_rating' id='wish_form_rating' value='' hidden/>
-            <input type='text' name='wish_form_url' id='wish_form_url' value='' hidden/>
-            <input type='text' name='wish_form_formatted_address' id='wish_form_formatted_address' value='' hidden/>
-            <input type='text' name='wish_form_website' id='wish_form_website' value='' hidden/>
-        </form>
+        <div class='flex index-buttons'>
+            <form action='/{{_id}}/wishlist' method='post' id='wishlist-add'>
+                <input type='text' name='wish_form_place_id' id='wish_form_place_id' value='' hidden/>
+                <input type='text' name='wish_form_name' id='wish_form_name' value='' hidden/>
+                <input type='text' name='wish_form_photos' id='wish_form_photos' value='' hidden/>
+                <input type='text' name='wish_form_price_level' id='wish_form_price_level' value='' hidden/>
+                <input type='text' name='wish_form_rating' id='wish_form_rating' value='' hidden/>
+                <input type='text' name='wish_form_url' id='wish_form_url' value='' hidden/>
+                <input type='text' name='wish_form_formatted_address' id='wish_form_formatted_address' value='' hidden/>
+                <input type='text' name='wish_form_website' id='wish_form_website' value='' hidden/>
+            </form>
 
-        <form action='/{{_id}}/favorites' method='post' id='favorites-add'>
-            <input type='text' name='favs_form_place_id' id='favs_form_place_id' value='' hidden/>
-            <input type='text' name='favs_form_name' id='favs_form_name' value='' hidden/>
-            <input type='text' name='favs_form_photos' id='favs_form_photos' value='' hidden/>
-            <input type='text' name='favs_form_price_level' id='favs_form_price_level' value='' hidden/>
-            <input type='text' name='favs_form_rating' id='favs_form_rating' value='' hidden/>
-            <input type='text' name='favs_form_url' id='favs_form_url' value='' hidden/>
-            <input type='text' name='favs_form_formatted_address' id='favs_form_formatted_address' value='' hidden/>
-            <input type='text' name='favs_form_website' id='favs_form_website' value='' hidden/>
-        </form>
+            <form action='/{{_id}}/favorites' method='post' id='favorites-add'>
+                <input type='text' name='favs_form_place_id' id='favs_form_place_id' value='' hidden/>
+                <input type='text' name='favs_form_name' id='favs_form_name' value='' hidden/>
+                <input type='text' name='favs_form_photos' id='favs_form_photos' value='' hidden/>
+                <input type='text' name='favs_form_price_level' id='favs_form_price_level' value='' hidden/>
+                <input type='text' name='favs_form_rating' id='favs_form_rating' value='' hidden/>
+                <input type='text' name='favs_form_url' id='favs_form_url' value='' hidden/>
+                <input type='text' name='favs_form_formatted_address' id='favs_form_formatted_address' value='' hidden/>
+                <input type='text' name='favs_form_website' id='favs_form_website' value='' hidden/>
+            </form>
+        </div>
 
     </div>
 </div>

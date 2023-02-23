@@ -300,6 +300,44 @@ h1 {
   color: white;
 }
 
+.search-container a {
+  text-decoration: none;
+  color:#BFA05F;
+}
+
+.index-buttons {
+  flex: 1;
+}
+
+.index-buttons > form {
+  width: 100%;
+  flex-grow: 1;
+}
+
+.index-buttons > form > button {
+  width: 100%;
+  flex-grow: 1;
+}
+
+#res-photo {
+  max-height: 500px;
+  width: auto;
+}
+
+#wish-submit {
+  color: white;
+  background-color: #BFA05F;
+  font-family: 'Archivo Narrow', sans-serif;
+  border: none;
+}
+
+#favs-submit {
+  color: white;
+  background-color: #BFA05F;
+  font-family: 'Archivo Narrow', sans-serif;
+  border: none;
+}
+
 /* ----------------------------------------------------------------------- LISTS ⤵ */
 .restaurant-page {
   flex-wrap: wrap;
