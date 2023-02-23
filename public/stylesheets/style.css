@@ -425,18 +425,19 @@ h1 {
   aspect-ratio: 1;
 }
 
+#create-collection-btn {
+    color: white;
+    background-color: #BFA05F;
+    font-family: 'Archivo Narrow', sans-serif;
+    border: none;
+}
 
-
-
-
-/* .primary-navigation {
-  font-family: 'Archivo Narrow', sans-serif;
-  list-style: none;
-  padding: 0 15px;
-  margin: 0;
-  background: #000000bb;
-  align-items: center;
-} */
+#add-to-collection-btn {
+    color: white;
+    background-color: #767A81;
+    font-family: 'Archivo Narrow', sans-serif;
+    border: none;
+}
 
 
 /* ----------------------------------------------------------------------- HORIZONTAL RULER COLLECTIONS⤵ */
@@ -497,8 +498,4 @@ h1 {
 
 .text404{
   margin: 10px;
-}
-
-.text4041{
-  margin-bottom: 20px;
 }
