@@ -21,15 +21,14 @@
     <a href="{{url}} " class="href">View on Maps</a>
      <a href="{{website}} " class="href">Visit Website</a>
     <p>{{formatted_address}}</p>
-    
+{{!--     
          <form action="/restaurant/{{this._id}}" method="get" class="">
             <button type="submit">Comments</button>
-          </form>
+          </form> --}}
     
-    
-         <form action="/{{this._id}}/deleteFavorites" method="post" class="">
-            <button type="submit">Delete Restaurant</button>
-          </form>
+    <form action="/{{this._id}}/deleteFavorites" method="post" class="">
+      <button type="submit">Delete from favorites</button>
+    </form>
     
     
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
