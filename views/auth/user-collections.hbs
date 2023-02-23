@@ -1,0 +1,27 @@
+<h1>My collections</h1>
+
+<form action='/{{_id}}/create-collection' method='post' >
+  <label for="name">Create a collection</label>
+  <input type='text' name='name' id='name'>
+  <button type='submit'>Create</button>
+</form>
+
+
+<div class='container'>
+  <div class='row'>
+
+    {{#each collections}}
+        <form action="/collection/{{this._id}}" method='get'>
+            <button type="submit"><h2>{{name}}</h2></button>
+        </form>
+        <form action="/collection/{{this._id}}/delete" method="post">
+         <button type="submit">Delete Collection</button>
+        </form>
+    {{/each}}
+  </div>
+</div>
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
+
+</div>

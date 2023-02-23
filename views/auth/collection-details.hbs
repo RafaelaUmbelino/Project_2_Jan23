@@ -1,0 +1,24 @@
+<h1>{{name}} collection</h1>
+
+<div class='container'>
+  <div class='row'>
+
+
+    {{#each restaurants}}
+    <div class="col-md-6 col-lg-4">
+          <img src="{{photos}}" alt="{{this.name}} photo" class="photos">
+          <h5>{{this.name}}</h5>
+          <p>{{price_level}}</p>
+          <p>{{rating}}</p>
+          <a href="{{url}} " class="href">View on Maps</a>
+          <a href="{{website}} " class="href">Visit Website</a>
+          <p>{{formatted_address}}</p>
+        </div>
+     
+    {{/each}}
+  </div>
+</div>
+       
+    {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}}
