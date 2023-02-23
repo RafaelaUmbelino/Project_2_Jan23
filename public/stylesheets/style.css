@@ -1,21 +1,98 @@
+/*--------------------------------------------------------------------------------------- RESET ⤵ */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*--------------------------------------------------------------------------------------- RESET ⤴ */
+
+/* ----------------------------------------------------------------------- UTILITY AND GENERAL ⤵ */
+
 /* colors:
 Cod Gray #1D1C1B
 Twine #BFA05F
 Rolling Stone #767A81
 Oslo Gray #abafb2 */
 
-
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00b7ff;
-}
-
-h1 {
-  color: 15px;
+/*   background-color: red; */
+  background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.3), 
+          rgba(0, 0, 0, 0.3)
+        ),
+        url("../images/bg-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100% 0;
+  background-attachment: fixed;
+  font-family: 'Archivo', sans-serif;
 }
 
 .photos{
@@ -28,12 +105,147 @@ h1 {
   width: 700px;
 }
 
-.signup{
-  margin-right: 10px;
-  text-decoration: none;
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem)
 }
 
-.login{
-  margin-right: 10px;
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+
+.d-block {
+  display: block;
+}
+
+.sr-only {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  }
+
+/* ----------------------------------------------------------------------- NAVBAR ⤵ */
+
+.logo {
+  margin: 15px;
+  width: 120px;
+}
+
+.primary-header {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-nav-toggle{
+  display: none;
+}
+
+.primary-navigation {
+  font-family: 'Archivo Narrow', sans-serif;
+  list-style: none;
+  padding: 0 15px;
+  margin: 0;
+  background: #000000bb;
+  align-items: center;
+}
+
+@supports (backdrop-filter: blur(0.5rem)) {
+  .primary-navigation {
+    background: #abafb236;
+    backdrop-filter: blur(0.5rem);
+  }
+}
+
+.primary-navigation  a {
   text-decoration: none;
+  color: #ffffff;
+}
+
+
+.primary-navigation button {
+	background: none;
+	color: #ffffff;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.primary-navigation  a:hover, button:hover {
+  color: #BFA05F;
+  transition: 0.7s;
+}
+
+.active {
+  color: #1D1C1B
+}
+/* 
+.primary-navigation  a:active, button:active {
+  background-color: #BFA05F;
+}
+ */
+
+@media (max-width: 40em) {
+  .primary-navigation {
+    position: fixed;
+    inset: 0 0 0 50%;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: min(20vh, 2rem) 5em 0 0;
+    z-index:1000;
+    transform: translateX(100%);
+    transition: transform 350ms ease-out;
+  }
+
+  .primary-navigation[data-visible='true'] {
+    transform: translateX(0%);
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    background-image: url("../images/burger-menu.png");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 0;
+    width: 2rem;
+    aspect-ratio: 1;
+    top: 2rem;
+    right: 2rem;
+    z-index: 9999;
+  }
+
+  .mobile-nav-toggle[aria-expanded="true"] {
+    background-image: url("../images/x-menu.png");
+  }
+  
+}
+
+/* ----------------------------------------------------------------------- INDEX/SEARCH ⤵ */
+
+.search-container {
+  flex-direction: column;
+  align-items: center;
+  width: 50vw;
+  margin: 50px;
+/*   background-color: #bfa15f5e; */
+}
+
+.autocomplete-search-bar > input {
+  height: 36px;
+  padding:0 10px;
+  min-width: 50vw;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.search-results {
+  flex-direction: column;
+  color: white;
 }
