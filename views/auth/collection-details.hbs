@@ -2,23 +2,23 @@
 
 <div class='container'>
   <div class='row'>
-<form>
+
+
     {{#each restaurants}}
-      <div class='card' style='width: 18rem;'>
-        <div class='card-body'>
-          <img src="{{photos}}" alt="{{this.name}} photo" class="">
-          <h5 class='card-title'>{{this.name}}</h5>
-          <p class='card-text'>{{price_level}}</p>
-          <p class='card-text'>{{rating}}</p>
+    <div class="col-md-6 col-lg-4">
+          <img src="{{photos}}" alt="{{this.name}} photo" class="photos">
+          <h5>{{this.name}}</h5>
+          <p>{{price_level}}</p>
+          <p>{{rating}}</p>
           <a href="{{url}} " class="href">View on Maps</a>
           <a href="{{website}} " class="href">Visit Website</a>
-          <p class='card-text'>{{formatted_address}}</p>
+          <p>{{formatted_address}}</p>
         </div>
-      </div>
+     
     {{/each}}
   </div>
 </div>
+       
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
     {{/if}}
-</div>
