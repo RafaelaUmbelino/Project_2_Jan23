@@ -141,12 +141,6 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.get('/profile', isLoggedIn, (req, res) => {
-  let user = req.session.user;
-
-  res.render('profile', user);
-});
-
 
 // GET /auth/logout
 router.get("/logout", isLoggedIn, (req, res) => {

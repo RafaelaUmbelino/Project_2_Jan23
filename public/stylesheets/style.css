@@ -165,6 +165,14 @@ body {
   color: #ffffff;
 }
 
+.primary-navigation p {
+  color: #BFA05F;
+}
+
+.primary-navigation form {
+  margin: 0;
+}
+
 
 .primary-navigation button {
 	background: none;

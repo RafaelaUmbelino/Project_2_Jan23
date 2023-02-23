@@ -16,7 +16,6 @@ const Review = require("../models/Review.model");
 router.get("/:id/favorites", isLoggedIn, async (req, res, next) => {
   try {
     let { _id } = req.session.currentUser;
-
     const user = await User.findById(_id).populate("favorites collections");
 
     res.render("auth/favorites", user);
@@ -43,9 +42,7 @@ router.get("/:id/wishlist", isLoggedIn, async (req, res, next) => {
 router.get("/:id/collections", isLoggedIn, async (req, res, next) => {
   try {
     let { _id } = req.session.currentUser;
-    console.log(req.session.currentUser);
     const user = await User.findById(_id).populate("collections");
-    console.log(user);
     res.render("auth/user-collections", user);
   } catch (error) {
     console.log(error);
@@ -56,7 +53,6 @@ router.get("/:id/collections", isLoggedIn, async (req, res, next) => {
 router.get("/collection/:id", isLoggedIn, async (req, res, next) => {
   try {
     let { id } = req.params;
-    console.log(req.params);
     const collection = await Collection.findById(id).populate("restaurants");
     res.render("auth/collection-details", collection);
   } catch (error) {
