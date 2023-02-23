@@ -257,3 +257,52 @@ body {
   flex-direction: column;
   color: white;
 }
+
+/* ----------------------------------------------------------------------- HORIZONTAL RULER COLLECTIONS⤵ */
+
+.hr-theme-slash-2 {
+  display: flex;
+
+}
+  
+  .hr-line {
+    width: 50%;
+    position: relative;
+    margin: 15px;
+    border-bottom: 1px solid white;
+  }
+  .hr-icon {
+    position: relative;
+    top: 3px;
+    color:white;
+    
+  }
+
+  .material-icons{
+    width: 30px;
+  }
+
+
+  .myCollectionButton{
+    text-decoration: none;
+    color: #BFA05F;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 3em;
+   
+  -webkit-text-stroke: 1px black;
+}
+
+
+.createCollectionBar{
+  height: 26px;
+  padding:0 10px;
+  min-width: 30vw;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-left: 20px;
+
+}
+
+
+
