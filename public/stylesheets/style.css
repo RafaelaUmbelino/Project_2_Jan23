@@ -111,6 +111,22 @@ body {
   gap: var(--gap, 1rem)
 }
 
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.align-flex-start {
+  align-items: flex-start;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.pad-left-10 {
+  padding-left: 10px;;
+}
+
 .grid {
   display: grid;
   gap: var(--gap, 1rem);
@@ -133,6 +149,24 @@ h1 {
   margin: 30px 50px;
   border-bottom: 2px solid white;
   width: 30vw;
+}
+
+.small-text {
+  font-style:italic;
+  font-size: 0.8rem;
+}
+
+.light-gray {
+  color: #abafb2;
+}
+
+.z-index {
+  z-index: 3000;
+}
+
+.full-height {
+  height: 100%;
+  margin: 0;
 }
 
 /* ----------------------------------------------------------------------- NAVBAR ⤵ */
@@ -239,6 +273,7 @@ h1 {
   .mobile-nav-toggle[aria-expanded="true"] {
     background-image: url("../images/x-menu.png");
   }
+
   
 }
 
@@ -273,13 +308,99 @@ h1 {
 
 .restaurant-container {
   margin: 30px;
-  background-color: red;
+  background-color: #000000bb;
   width: 400px;
 /*   width: max-content; */
   flex-grow: 0;
   flex-shrink: 1;
   flex-basis: auto;
 }
+
+@supports (backdrop-filter: blur(0.5rem)) {
+  .restaurant-container {
+    background-color: #1d1c1bb3;
+    backdrop-filter: blur(0.5rem);
+  }
+}
+
+.restaurant-container > div {
+  margin: 10px;
+/*   width: 100%; */
+}
+
+.restaurant-heading {
+  padding-right: 40px;
+}
+
+.center-container {
+  flex-direction: column;
+  align-items: center;
+}
+
+.center-container img {
+  max-height: 300px;
+  width: auto;
+}
+
+.center-container > div {
+  width: 100%;
+}
+
+.center-container a {
+  text-decoration: none;
+  color:#BFA05F;
+}
+
+#x-btn {
+  display: block;
+  background-image: url("../images/x-menu.png");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 0;
+  width: 2rem;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+}
+
+.dropdown-toggle {
+  z-index: 3000;
+  margin: 10px 0;
+}
+
+.button-round {
+  width: 2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+#add-favorite-btn {
+  display: block;
+  background-image: url("../images/white-heart.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 0;
+  width: 2rem;
+  aspect-ratio: 1;
+}
+
+
+
+
+
+/* .primary-navigation {
+  font-family: 'Archivo Narrow', sans-serif;
+  list-style: none;
+  padding: 0 15px;
+  margin: 0;
+  background: #000000bb;
+  align-items: center;
+} */
+
+
 /* ----------------------------------------------------------------------- HORIZONTAL RULER COLLECTIONS⤵ */
 
 .hr-theme-slash-2 {
@@ -317,13 +438,11 @@ h1 {
 
 
 .createCollectionBar{
-  
   height: 26px;
   padding: 0 10px;
   min-width: 30vw;
   border-radius: 12px;
   overflow: hidden;
   margin: 15px;
-
 }
 

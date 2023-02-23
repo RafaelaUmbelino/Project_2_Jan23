@@ -1,4 +1,4 @@
-<h1>{{name}} collection</h1>
+{{!-- <h1>{{name}} collection</h1>
 
 <div class='container'>
   <div class='row'>
@@ -22,3 +22,47 @@
     {{#if errorMessage}}
       <p class="error">{{errorMessage}}</p>
     {{/if}}
+
+ --}}
+      
+<h1>{{name}} collection</h1>
+
+<div class="restaurant-page flex">
+    {{#each restaurants}}
+    <div class="restaurant-container">
+{{!--       <form action="/{{_id}}/deleteFromCollection" method="post" class="">
+        <button id='x-btn' type="submit"><span class='sr-only'>Delete from collection</span></button>
+      </form> --}}
+      <div class="restaurant-heading">
+        <h2>{{name}}</h5>
+        <p class='small-text'>{{formatted_address}}</p>
+      </div>
+        
+        <div class="center-container flex">
+          <img src="{{photos}}" alt="{{name}} photo" class="photos">
+          <div class='flex align-flex-start pad-left-10 light-gray'>
+            {{#if rating}}
+            <p><span class='small-text'>Google rating: </span> {{rating}} / 5</p>
+            {{/if}}
+            {{#if price_level}}
+            <p><span class='small-text'>Price level: </span> {{price_level}} / 5</p>
+            {{/if}}
+          </div>
+          <div class="flex space-evenly z-index">
+            <a href="{{url}} " class="href">View on Maps</a>
+            <a href="{{website}} " class="href">Visit Website</a>
+          </div>       
+        </div>
+        
+          {{!--     
+         <form action="/restaurant/{{this._id}}" method="get" class="">
+            <button type="submit">Comments</button>
+          </form> --}}
+    </div>
+    {{/each}}
+</div>
+
+
+{{#if errorMessage}}
+  <p class="error">{{errorMessage}}</p>
+{{/if}}
