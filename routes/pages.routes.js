@@ -13,16 +13,13 @@ const Review = require("../models/Review.model");
 //   res.render("restaurantDetails");
 // });
 
-
-
 router.get("/:id/favorites", isLoggedIn, async (req, res, next) => {
-
   try {
     let { _id } = req.session.currentUser;
 
     const user = await User.findById(_id).populate("favorites collections");
 
-    res.render("auth/favorites",  user );
+    res.render("auth/favorites", user);
   } catch (error) {
     console.log(error);
     next(error);
@@ -32,11 +29,9 @@ router.get("/:id/favorites", isLoggedIn, async (req, res, next) => {
 
 router.get("/:id/wishlist", isLoggedIn, async (req, res, next) => {
   try {
-
     let { _id } = req.session.currentUser;
 
     const user = await User.findById(_id).populate("wishlist collections");
-
 
     res.render("auth/wishlist", user);
   } catch (error) {
@@ -48,7 +43,7 @@ router.get("/:id/wishlist", isLoggedIn, async (req, res, next) => {
 router.get("/:id/collections", isLoggedIn, async (req, res, next) => {
   try {
     let { _id } = req.session.currentUser;
-    console.log(req.session.currentUser)
+    console.log(req.session.currentUser);
     const user = await User.findById(_id).populate("collections");
     console.log(user);
     res.render("auth/user-collections", user);
@@ -71,14 +66,12 @@ router.get("/collection/:id", isLoggedIn, async (req, res, next) => {
 });
 
 router.get("/restaurant/:id", isLoggedIn, async (req, res, next) => {
-
   try {
-    const {id} = req.params;  
+    const { id } = req.params;
 
-    let restaurant = await Restaurant.findById(id)
+    let restaurant = await Restaurant.findById(id);
 
     res.render("auth/restaurantDetails", restaurant);
-
   } catch (error) {
     console.log(error);
     next(error);
@@ -87,24 +80,21 @@ router.get("/restaurant/:id", isLoggedIn, async (req, res, next) => {
 
 //----------------------------------------------------------------------- POST/EDIT ROUTES ⤵
 
-router.post("/wishtofavorites/:id", isLoggedIn, async(req, res, next) => {
- try {
- 
-  let restaurantId = req.params.id;
-  let userId = req.session.currentUser._id;
-  await User.findByIdAndUpdate(userId, {$pull: {wishlist: restaurantId } });
-  await User.findByIdAndUpdate(userId, {$push: {favorites: restaurantId } });
+router.post("/wishtofavorites/:id", isLoggedIn, async (req, res, next) => {
+  try {
+    let restaurantId = req.params.id;
+    let userId = req.session.currentUser._id;
+    await User.findByIdAndUpdate(userId, { $pull: { wishlist: restaurantId } });
+    await User.findByIdAndUpdate(userId, {
+      $push: { favorites: restaurantId },
+    });
 
-  res.redirect(`/${userId}/favorites`);
-
-} catch (error) {
-  console.log(error);
-  next(error);
-  
-}
-
+    res.redirect(`/${userId}/favorites`);
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 });
-
 
 /* router.post("/:id/review", isLoggedIn, async (req, res, next) => {
   try {
@@ -119,44 +109,57 @@ router.post("/wishtofavorites/:id", isLoggedIn, async(req, res, next) => {
   }
 }); */
 
-
 //----------------------------------------------------------------------- DELETE ROUTES ⤵
 
 //Delete button apenas nas listas do user fetch
 
- router.post ('/:id/deleteFavorites', async (req,res,next)=> {
+router.post("/:id/deleteFavorites", async (req, res, next) => {
   try {
     let restaurantId = req.params.id;
     let { _id } = req.session.currentUser;
 
-    const removeFavorite = await User.findByIdAndUpdate({ _id }, {$pull: {favorites: restaurantId}});
-  
-      res.redirect(`/${_id}/favorites`);
-    
+    const removeFavorite = await User.findByIdAndUpdate(
+      { _id },
+      { $pull: { favorites: restaurantId } }
+    );
+
+    res.redirect(`/${_id}/favorites`);
   } catch (error) {
     console.log(error);
     next(error);
-    
   }
-
-
-
 });
 
-
-router.post ('/:id/deleteWishlist', async (req,res,next)=> {
+router.post("/:id/deleteWishlist", async (req, res, next) => {
   try {
     let restaurantId = req.params.id;
     let { _id } = req.session.currentUser;
 
-    const removeWishlist = await User.findByIdAndUpdate({ _id }, {$pull: {wishlist: restaurantId}});
-  
-      res.redirect(`/${_id}/wishlist`);
-    
+    const removeWishlist = await User.findByIdAndUpdate(
+      { _id },
+      { $pull: { wishlist: restaurantId } }
+    );
+
+    res.redirect(`/${_id}/wishlist`);
   } catch (error) {
     console.log(error);
     next(error);
-    
+  }
+});
+
+router.post("/collection/:id/delete", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    let userId = req.session.currentUser._id;
+
+    console.log(userId);
+    console.log(req.session.currentUser);
+
+    await Collection.findByIdAndDelete(id);
+    res.redirect(`/${userId}/collections`);
+  } catch (error) {
+    console.log(error);
+    next(error);
   }
 });
 

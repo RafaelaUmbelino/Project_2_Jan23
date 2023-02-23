@@ -14,6 +14,9 @@
         <form action="/collection/{{this._id}}" method='get'>
             <button type="submit"><h2>{{name}}</h2></button>
         </form>
+        <form action="/collection/{{this._id}}/delete" method="post">
+         <button type="submit">Delete Collection</button>
+        </form>
     {{/each}}
   </div>
 </div>
